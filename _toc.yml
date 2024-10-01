@@ -1,0 +1,7 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: 1. UM 1
+chapters:
+- file: 1. UM 1 - ćwiczenia
