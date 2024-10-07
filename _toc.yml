@@ -5,3 +5,4 @@ format: jb-book
 root: 1. UM 1
 chapters:
 - file: 1. UM 1 - ćwiczenia
+- file: 1. UM 2 - ćwiczenia
