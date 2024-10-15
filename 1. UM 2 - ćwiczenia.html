@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1. UM 2 - ćwiczenia';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uczenie Maszynowe - ćwiczenia 3" href="1.%20UM%203%20-%20%C4%87wiczenia.html" />
     <link rel="prev" title="Uczenie Maszynowe - ćwiczenia 1" href="1.%20UM%201%20-%20%C4%87wiczenia.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,6 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Uczenie Maszynowe - ćwiczenia 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 3</a></li>
 </ul>
 
     </div>
@@ -445,7 +447,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4
 </pre></div>
 </div>
 </div>
@@ -483,6 +485,204 @@ document.write(`
 <p>Za jedną z nich jest nagroda, za dwiema pozostałymi koza.</p>
 <p>Uczestnik wybiera początkowo jedną z bramek. Prowadzący teleturniej otwiera jedną z dwóch niewybranych bramek. Uczestnik może wybrać - zmienić swój wybór lub pozostać przy swoim dotychczasowym wyborze.</p>
 <p>Zasymuluj prawdopodobieństwo wygranej z uczestnikiem, który zmienia bramki i który nie zmienia jej.</p>
+<p>Jak wyświetlić kilka słupków obok siebie?</p>
+<p>z wykorzystaniem atrybutu “hue”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Dane w formacie DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Grupa&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Grupa 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 4&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 4&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Wartości&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s1">&#39;Zestaw&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Zestaw 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 2&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Tworzenie wykresu słupkowego</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Grupa&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Wartości&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Zestaw&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Dodanie tytułów i etykiet</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porównanie dwóch zestawów danych&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Grupy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Wartości&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wyświetlenie wykresu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9978ff0bf3954a26f3796fc93120731ae35bd99a1a9d2cd8390c9f586b82d756.png" src="_images/9978ff0bf3954a26f3796fc93120731ae35bd99a1a9d2cd8390c9f586b82d756.png" />
+</div>
+</div>
+<p>Jeśli mamy zestawy danych w osobnych słupkach, możemy użyć funkcji pd.melt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Dane w szerokim formacie</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Grupa&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Grupa 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Grupa 4&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Zestaw 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s1">&#39;Zestaw 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Grupa</th>
+      <th>Zestaw 1</th>
+      <th>Zestaw 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Grupa 1</td>
+      <td>10</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Grupa 2</td>
+      <td>20</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Grupa 3</td>
+      <td>15</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Grupa 4</td>
+      <td>30</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;Grupa&#39;</span><span class="p">,</span> <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Zestaw 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Zestaw 2&#39;</span><span class="p">],</span> 
+                  <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Zestaw&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Wartości&#39;</span><span class="p">)</span>
+<span class="n">df_long</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Grupa</th>
+      <th>Zestaw</th>
+      <th>Wartości</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Grupa 1</td>
+      <td>Zestaw 1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Grupa 2</td>
+      <td>Zestaw 1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Grupa 3</td>
+      <td>Zestaw 1</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Grupa 4</td>
+      <td>Zestaw 1</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Grupa 1</td>
+      <td>Zestaw 2</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Grupa 2</td>
+      <td>Zestaw 2</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Grupa 3</td>
+      <td>Zestaw 2</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Grupa 4</td>
+      <td>Zestaw 2</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 </section>
 </section>
@@ -525,6 +725,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 1</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="1.%20UM%203%20-%20%C4%87wiczenia.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

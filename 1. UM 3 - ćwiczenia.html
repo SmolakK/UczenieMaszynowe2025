@@ -1,0 +1,749 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Uczenie Maszynowe - ćwiczenia 3 &#8212; Uczenie Maszynowe 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1. UM 3 - ćwiczenia';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Uczenie Maszynowe - ćwiczenia 2" href="1.%20UM%202%20-%20%C4%87wiczenia.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="1.%20UM%201.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1.%20UM%201.html">
+                    Uczenie Maszynowe - Wykład 1
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%201%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 1</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%202%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uczenie Maszynowe - ćwiczenia 3</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1. UM 3 - ćwiczenia.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1. UM 3 - ćwiczenia.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Uczenie Maszynowe - ćwiczenia 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pierwszy-model-intuicja">Pierwszy model - intuicja</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-prawdopodobienstwa-w-uczeniu-maszynowym">Teoria prawdopodobieństwa w uczeniu maszynowym</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelowanie-niepewnosci">Modelowanie niepewności</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modele-probabilistyczne">Modele probabilistyczne</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twierdzenie-bayesa">Twierdzenie Bayesa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zaaplikuj-twierdzenie-bayesa">Zaaplikuj twierdzenie Bayesa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lancuch-markowa">Łańcuch Markowa</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zastosowania">Zastosowania</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lancuch-markowa-prawdopodobienstwo-warunkowe">1. Łańcuch Markowa - Prawdopodobieństwo warunkowe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macierz-przejsc-w-lancuchu-markowa">2. Macierz przejść w łańcuchu Markowa</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uczenie-maszynowe-cwiczenia-3">
+<h1>Uczenie Maszynowe - ćwiczenia 3<a class="headerlink" href="#uczenie-maszynowe-cwiczenia-3" title="Permalink to this heading">#</a></h1>
+<section id="pierwszy-model-intuicja">
+<h2>Pierwszy model - intuicja<a class="headerlink" href="#pierwszy-model-intuicja" title="Permalink to this heading">#</a></h2>
+<p>Celem dzisiejszych ćwiczeń jest zbudowanie intuicji dotyczącej procesu uczenia maszynowego. Zbudujemy dwa pierwsze modele, które są typem modeli uczenia maszynowego. Są to dość proste, ale efektywne modele, które korzystają z dobrodziejstw probabilistyki.</p>
+</section>
+<section id="teoria-prawdopodobienstwa-w-uczeniu-maszynowym">
+<h2>Teoria prawdopodobieństwa w uczeniu maszynowym<a class="headerlink" href="#teoria-prawdopodobienstwa-w-uczeniu-maszynowym" title="Permalink to this heading">#</a></h2>
+<p>Teoria prawdopodobieństwa odgrywa kluczową rolę w uczeniu maszynowym, dostarczając ramy do modelowania niepewności i przewidywania na podstawie danych. Możemy określić, kiedy coś się wydarzy, jeśli zdarza się to z wyższym prawdopodobieństwem.</p>
+</section>
+<section id="modelowanie-niepewnosci">
+<h2>Modelowanie niepewności<a class="headerlink" href="#modelowanie-niepewnosci" title="Permalink to this heading">#</a></h2>
+<p>Uczenie maszynowe często zajmuje się niepewnymi wynikami, takimi jak przewidywanie, czy e-mail to spam, czy nie. Prawdopodobieństwo pozwala nam na ilościowe określenie tej niepewności. Modele nie dają jednoznacznej odpowiedzi, zamiast tego dostarczają wynik w postaci prawdopodobieństwa — np. 70% szans, że e-mail to spam.</p>
+</section>
+<section id="modele-probabilistyczne">
+<h2>Modele probabilistyczne<a class="headerlink" href="#modele-probabilistyczne" title="Permalink to this heading">#</a></h2>
+<p>Wiele modeli uczenia maszynowego ma charakter probabilistyczny, co oznacza, że używają rozkładów prawdopodobieństwa do podejmowania decyzji.</p>
+<p>Modele wykorzystują wiedzę wcześniejszą (doświadczenie E) do oszacowania prawdopodobieństwa wystąpienia danego zdarzenia. Dzięki temu „uczą się” przewidywać określone wyniki. Inne zastosowania teorii prawdopodobieństwa w uczeniu maszynowym</p>
+<section id="twierdzenie-bayesa">
+<h3>Twierdzenie Bayesa<a class="headerlink" href="#twierdzenie-bayesa" title="Permalink to this heading">#</a></h3>
+<p>Wiemy, że Steve jest bardzo nieśmiałą i uporządkowaną osobą. Co jest bardziej prawdopodobne:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Prawdopodobieństwo, że jest bibliotekarzem?
+Prawdopodobieństwo, że jest rolnikiem?
+</pre></div>
+</div>
+<p>Wiemy, że Linda aktywnie angażuje się w ruch feministyczny. Co jest bardziej prawdopodobne:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Linda jest kasjerką w banku?
+Linda jest kasjerką w banku i jest aktywna w ruchu feministycznym?
+</pre></div>
+</div>
+<p>Przyjrzyjmy się Steve’owi:</p>
+<p>Podano nam informację, że w populacji jest 10 bibliotekarzy i 200 rolników. Co byś teraz powiedział?</p>
+<p>I otrzymaliśmy kolejną informację:</p>
+<p>Istnieje 40% prawdopodobieństwo, że bibliotekarz jest nieśmiały i uporządkowany, oraz 10% prawdopodobieństwo, że rolnik pasuje do tego opisu. Jak wygląda to teraz?
+Twierdzenie Bayesa w praktyce</p>
+<p>Twierdzenie Bayesa pomaga nam znaleźć prawdopodobieństwo zdarzenia na podstawie wcześniejszej wiedzy o powiązanych warunkach. Jest to proste, a zarazem potężne równanie, szeroko stosowane w uczeniu maszynowym. Poniższe równanie stanowi podstawę dla wielu modeli uczenia maszynowego:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+\]</div>
+<p>Gdzie:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P(A∣B)P(A∣B) to prawdopodobieństwo a posteriori: prawdopodobieństwo zdarzenia A, pod warunkiem, że B jest prawdziwe.
+P(B∣A)P(B∣A) to funkcja wiarygodności: prawdopodobieństwo zdarzenia B, pod warunkiem, że A jest prawdziwe.
+P(A)P(A) to prawdopodobieństwo a priori: początkowe prawdopodobieństwo zdarzenia A.
+P(B)P(B) to prawdopodobieństwo marginalne: prawdopodobieństwo wystąpienia zdarzenia B.
+</pre></div>
+</div>
+<p>Twierdzenie Bayesa dostarcza narzędzia do rozumowania o prawdopodobieństwach w uczeniu maszynowym, szczególnie w sytuacjach, gdzie musimy radzić sobie z niepewnością.</p>
+</section>
+</section>
+<section id="zaaplikuj-twierdzenie-bayesa">
+<h2>Zaaplikuj twierdzenie Bayesa<a class="headerlink" href="#zaaplikuj-twierdzenie-bayesa" title="Permalink to this heading">#</a></h2>
+<p>W pierszym ćwiczeniu za pomocą twierdzenia Bayesa sprawdź co jest bardziej parwdopodobne - czy Steve jest bibliotekarzem czy farmerem?</p>
+<p>P(A|B) - to prawdopodobieństwo, że jest bibliotekarzem, wiedząc, że jest nieśmiały i uporządkowany</p>
+<p>P(B|A)- to prawdopodobieństwo, że jest nieśmiały i uporządkowany, ponieważ jest bibliotekarzem</p>
+<p>P(B) - to prawdopodobieństwo, że jest nieśmiały i uporządkowany</p>
+<p>P(A) - to prawdopodobieństwo, że jest bibliotekarzem</p>
+<p>P(B|A) - 40% nieśmiałych i uporządkowanych osób to bibliotekarze</p>
+<p>P(B) - 10% rolników jest nieśmiałych i uporządkowanych, a 40% bibliotekarzy jest nieśmiałych i uporządkowanych</p>
+<p>P(A) - 10 z 210 osób to bibliotekarze</p>
+<ol class="arabic simple" start="2">
+<li><p>Teraz już wiemy jak działa twierdzenia Bayesa. Użyj twierdzenia Bayesa by zbudować Twój własny filtr spamu!</p></li>
+</ol>
+<p>Zróbmy to krok po kroku, poniżej zamieszcam przykłady wiadomości do treningu naszego modelu (doświadczenie E):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spam_messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Gratulacje! Wygrałeś nowego iPhone&#39;a! Kliknij tutaj, aby odebrać nagrodę!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zainwestuj teraz w kryptowaluty i zarób miliony bez żadnego wysiłku!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twoje konto bankowe zostanie zablokowane, jeśli nie klikniesz w ten link w ciągu 24 godzin!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Otrzymasz 1000 zł za wypełnienie tej prostej ankiety! Kliknij tutaj!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Kup tanie leki online bez recepty! Niesamowite promocje!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zdobądź dostęp do sekretnego programu, który nauczy cię zarabiać 10 000 zł miesięcznie!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Pokażemy ci, jak schudnąć 10 kg w tydzień! Wypróbuj naszą magiczną dietę już teraz!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Wygraj darmową podróż dookoła świata! Kliknij tutaj, aby wziąć udział!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Masz zaległe płatności na swoim koncie, natychmiast kliknij w link, aby uniknąć kar!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Szybki i łatwy kredyt! Bez sprawdzania zdolności kredytowej!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Powiadomienie: Twoje ubezpieczenie wygasa dziś! Kliknij tutaj, aby przedłużyć.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Odbierz swój darmowy voucher na zakupy w naszym sklepie! Kliknij, aby odebrać!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zyskaj dostęp do darmowego kursu inwestowania, kliknij tutaj!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twoje dane bankowe są zagrożone! Natychmiast kliknij, aby zabezpieczyć swoje konto!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Uzyskaj natychmiastową pożyczkę bez formalności! Kliknij tutaj!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Super oferta! Odbierz 50% zniżki na wszystko w naszym sklepie!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ostatnia szansa! Zarejestruj się, aby wygrać samochód!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Przelew gotówkowy czeka na ciebie! Kliknij tutaj, aby odebrać środki!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Specjalna oferta! Odbierz kupon na darmowe zakupy!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zyskaj darmowy dostęp do najnowszych gier komputerowych! Kliknij, aby pobrać!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Tylko dzisiaj! 90% zniżki na abonament telefoniczny!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Otrzymasz natychmiastowy dostęp do prywatnych filmów! Kliknij tutaj!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Weź udział w konkursie i wygraj weekend w luksusowym hotelu!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twoja subskrypcja wygasła! Odnów teraz, aby uniknąć przerwania usług!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Specjalny bonus! Zyskaj podwójne punkty lojalnościowe w naszym sklepie!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zainwestuj w przyszłość! Sprawdź nasze gwarantowane metody na szybki zysk!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Wyjątkowa oferta: Zapłać tylko 50% za miesięczny abonament premium!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zostań testerem najnowszych produktów i otrzymaj je za darmo!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Kliknij, aby odebrać swoją nagrodę z najnowszego konkursu!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zyskaj dostęp do ekskluzywnych ofert tylko dzisiaj! Nie przegap!&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal_messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Cześć, pamiętasz o naszym spotkaniu w piątek? Potwierdź proszę.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Proszę o przesłanie raportu do końca dnia. Pozdrawiam, Kasia.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zapraszamy na zebranie zespołu w środę o 10:00 w sali konferencyjnej.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zamówienie zostało zrealizowane, przesyłka powinna dotrzeć w ciągu 2 dni roboczych.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Cześć, mam nadzieję, że u Ciebie wszystko w porządku. Chciałem tylko zapytać, czy możemy się spotkać w weekend?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Przypominamy, że termin płatności za fakturę upływa za dwa dni.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;W załączniku przesyłam dokumenty do zatwierdzenia. Daj znać, jeśli masz jakieś pytania.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dziękujemy za zakupy w naszym sklepie. Twoje zamówienie zostało wysłane.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spotkanie projektowe zostało przełożone na piątek o 14:00. Proszę o potwierdzenie obecności.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Przypomnienie: Twoja wizyta lekarska jest umówiona na poniedziałek o 15:00.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dziękujemy za wiadomość, odpowiemy na nią w ciągu 24 godzin.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twój lot został zarezerwowany. Bilet zostanie wysłany na Twój adres e-mail.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Przypomnienie: Spotkanie zarządu odbędzie się jutro o 9:00.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Czy możesz potwierdzić swoje uczestnictwo w konferencji w przyszłym tygodniu?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twój rachunek telefoniczny za ten miesiąc wynosi 150 zł. Prosimy o dokonanie płatności.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;W załączeniu przesyłam poprawioną wersję umowy. Czekam na Twój feedback.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zapraszamy na szkolenie wprowadzające w środę o godzinie 10:00.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twoja paczka została wysłana. Przewidywana dostawa: piątek.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Czy mógłbyś przesłać prezentację na jutrzejsze spotkanie do końca dnia?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twój wniosek o urlop został zatwierdzony. Życzymy udanego wypoczynku!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dziękujemy za rejestrację na nasz newsletter. Wkrótce otrzymasz aktualizacje.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Prosimy o przesłanie faktury za usługi do końca tygodnia.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Otrzymaliśmy Twoje zamówienie. Przewidywana dostawa: środa.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Przypomnienie o zaplanowanej konserwacji sieci w najbliższy weekend.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twoje konto zostało zaktualizowane. Sprawdź swoje nowe ustawienia.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Twój wniosek został zatwierdzony. Dokumenty zostaną wysłane na Twój adres e-mail.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Czy moglibyśmy przełożyć spotkanie na poniedziałek o 10:00?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Zamówienie numer 12345 zostało anulowane zgodnie z Twoją prośbą.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Przypomnienie: W dniu jutrzejszym odbędzie się spotkanie zespołu o 11:00.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dziękujemy za dokonanie płatności. Potwierdzenie zostało wysłane na Twój adres e-mail.&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>2a. Oblicz pradopodobieństwo występowania każdego ze słów, w tym w zależności od typu wiadomości. Zbuduj dla nich słowniki prawdopodobieństwa. Przygotuj funkcje, które będą wykonywać te obliczenia.</p>
+<p>2b. Przygotuj klasę klasyfikatora Bayesa, który wykorzysta słowniki prawdopodobieństwa. Wykorzystaj poniższą strukturę:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NaiveBayesClassifier</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Słowniki do przechowywania częstotliwości słów dla każdej klasy</span>
+     <span class="c1"># Liczba wiadomości SPAM i normalnych</span>
+        <span class="c1"># Liczba wszystkich słów w wiadomościach SPAM i normalnych</span>
+        <span class="c1"># Zbiór wszystkich unikalnych słów</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+<p>2c. Zbuduj prostą metodę tokenizacji - rozbijania wiadomości na słowa.</p>
+<p>2d. Dodaj metodę trenowania (uczenia), która przyjmuje wiadomości wraz z etykietami tych wiadomości (spam/ham). Wykorzystaj funkcje z 2a.</p>
+<p>2e. Zbuduj metodę przewidywania “predict”, która określi czy wpisana wiadomość jest spamem czy nie. Wynik podaj w formie ułamka prawdopodobieństwa.</p>
+</section>
+<section id="lancuch-markowa">
+<h2>Łańcuch Markowa<a class="headerlink" href="#lancuch-markowa" title="Permalink to this heading">#</a></h2>
+<p>Łańcuch Markowa to matematyczny model, który opisuje proces, w którym przyszłe stany zależą wyłącznie od obecnego stanu, a nie od całej historii poprzednich stanów. W skrócie, jest to model procesów stochastycznych, w których przyszłość jest niezależna od przeszłości, o ile znamy obecny stan systemu.</p>
+<section id="zastosowania">
+<h3>Zastosowania<a class="headerlink" href="#zastosowania" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Prognoza pogoda
+Modelowanie zachowań użytkowników
+Przewidywanie lokalizacji użytkowników telefonii komórkowej
+</pre></div>
+</div>
+<p>Z puntku widzenia prawdopodobieństwa, łańcuch Markowa to macierz prawdopodobieństw warunkowych.</p>
+</section>
+<section id="lancuch-markowa-prawdopodobienstwo-warunkowe">
+<h3>1. Łańcuch Markowa - Prawdopodobieństwo warunkowe<a class="headerlink" href="#lancuch-markowa-prawdopodobienstwo-warunkowe" title="Permalink to this heading">#</a></h3>
+<p>Łańcuch Markowa zakłada, że przyszły stan $<span class="math notranslate nohighlight">\(X_{n+1}\)</span><span class="math notranslate nohighlight">\( zależy wyłącznie od obecnego stanu \)</span><span class="math notranslate nohighlight">\(X_n\)</span><span class="math notranslate nohighlight">\(, a nie od poprzednich stanów \)</span><span class="math notranslate nohighlight">\( X_{n-1}, X_{n-2}, \dots, X_0 \)</span>$. Prawdopodobieństwo przejścia między stanami możemy zapisać jako:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X_{n+1} = x_{n+1} | X_n = x_n, X_{n-1} = x_{n-1}, \dots, X_0 = x_0) = P(X_{n+1} = x_{n+1} | X_n = x_n)
+\]</div>
+<p>lub w skróconej formie:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X_{n+1} | X_n) = P(X_{n+1} | X_n)
+\]</div>
+</section>
+<section id="macierz-przejsc-w-lancuchu-markowa">
+<h3>2. Macierz przejść w łańcuchu Markowa<a class="headerlink" href="#macierz-przejsc-w-lancuchu-markowa" title="Permalink to this heading">#</a></h3>
+<p>Macierz przejść opisuje prawdopodobieństwo przejścia z jednego stanu do drugiego. Jeżeli mamy zbiór stanów $<span class="math notranslate nohighlight">\(S = \{s_1, s_2, \dots, s_k\} \)</span><span class="math notranslate nohighlight">\(, to macierz przejść \)</span><span class="math notranslate nohighlight">\( P \)</span>$ dla tych stanów jest zdefiniowana jako:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = \begin{pmatrix}
+P(s_1 \rightarrow s_1) &amp; P(s_1 \rightarrow s_2) &amp; \cdots &amp; P(s_1 \rightarrow s_k) \\
+P(s_2 \rightarrow s_1) &amp; P(s_2 \rightarrow s_2) &amp; \cdots &amp; P(s_2 \rightarrow s_k) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+P(s_k \rightarrow s_1) &amp; P(s_k \rightarrow s_2) &amp; \cdots &amp; P(s_k \rightarrow s_k)
+\end{pmatrix}
+\end{split}\]</div>
+<p>Każdy element $<span class="math notranslate nohighlight">\( P(s_i \rightarrow s_j) \)</span><span class="math notranslate nohighlight">\( w macierzy opisuje prawdopodobieństwo przejścia ze stanu \)</span><span class="math notranslate nohighlight">\( s_i \)</span><span class="math notranslate nohighlight">\( do stanu \)</span><span class="math notranslate nohighlight">\( s_j \)</span>$.</p>
+<ol class="arabic simple" start="3">
+<li><p>Zaimplementuj klasę łańcuchów Markowa.</p></li>
+</ol>
+<p>Wytrenuj go dla przykładowej sekwencji stanów opisujących pogodę w kolejnych dniach we Wrocławiu:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> S - słonecznie
+ D - deszczowo
+ P - pochmurnie
+</pre></div>
+</div>
+<p>Spróbuj wykonać to zadanie używając macierzę przejść i bez niej. Sprawdź, która metoda jest szybsza używając biblioteki time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sekwencja_stanow</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> 
+                    <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zastanów się - jak sprawdzić jak dokładna jest nasza metoda?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.%20UM%202%20-%20%C4%87wiczenia.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 2</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pierwszy-model-intuicja">Pierwszy model - intuicja</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teoria-prawdopodobienstwa-w-uczeniu-maszynowym">Teoria prawdopodobieństwa w uczeniu maszynowym</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelowanie-niepewnosci">Modelowanie niepewności</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modele-probabilistyczne">Modele probabilistyczne</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twierdzenie-bayesa">Twierdzenie Bayesa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zaaplikuj-twierdzenie-bayesa">Zaaplikuj twierdzenie Bayesa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lancuch-markowa">Łańcuch Markowa</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zastosowania">Zastosowania</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lancuch-markowa-prawdopodobienstwo-warunkowe">1. Łańcuch Markowa - Prawdopodobieństwo warunkowe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macierz-przejsc-w-lancuchu-markowa">2. Macierz przejść w łańcuchu Markowa</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kamil Smolak
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
