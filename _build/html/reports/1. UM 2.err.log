@@ -17,26 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-class NaiveBayesClassifier:
-
-    def __init__(self):
-    # Słowniki do przechowywania częstotliwości słów dla każdej klasy
-     # Liczba wiadomości SPAM i normalnych
-        # Liczba wszystkich słów w wiadomościach SPAM i normalnych
-        # Zbiór wszystkich unikalnych słów
-        self.p_spam = 0
-        self.p_spam_words = {}
-        self.p_normal_words = {}
-        
-    def fit(self,spam,ham):
-        
-    
+model.intercept_
 ------------------
 
-[1;36m  Input [1;32mIn [14][1;36m[0m
-[1;33m    [0m
-[1;37m    ^[0m
-[1;31mIndentationError[0m[1;31m:[0m expected an indented block
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mAttributeError[0m                            Traceback (most recent call last)
+Input [1;32mIn [8][0m, in [0;36m<cell line: 1>[1;34m()[0m
+[1;32m----> 1[0m [43mmodel[49m[38;5;241;43m.[39;49m[43mintercept_[49m
 
-IndentationError: expected an indented block (1157535236.py, line 14)
+[1;31mAttributeError[0m: 'LinearRegression' object has no attribute 'intercept_'
+AttributeError: 'LinearRegression' object has no attribute 'intercept_'
 

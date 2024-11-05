@@ -184,6 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 4</a></li>
+
 </ul>
 
     </div>
@@ -462,6 +464,27 @@ P(B)P(B) to prawdopodobieństwo marginalne: prawdopodobieństwo wystąpienia zda
 <p>P(B|A) - 40% nieśmiałych i uporządkowanych osób to bibliotekarze</p>
 <p>P(B) - 10% rolników jest nieśmiałych i uporządkowanych, a 40% bibliotekarzy jest nieśmiałych i uporządkowanych</p>
 <p>P(A) - 10 z 210 osób to bibliotekarze</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PBA</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">PA</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="mi">210</span>
+<span class="n">PB</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">200</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">210</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">PBA</span> <span class="o">*</span> <span class="n">PA</span><span class="p">)</span><span class="o">/</span><span class="n">PB</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.16666666666666669
+</pre></div>
+</div>
+</div>
+</div>
 <ol class="arabic simple" start="2">
 <li><p>Teraz już wiemy jak działa twierdzenia Bayesa. Użyj twierdzenia Bayesa by zbudować Twój własny filtr spamu!</p></li>
 </ol>
@@ -543,7 +566,240 @@ P(B)P(B) to prawdopodobieństwo marginalne: prawdopodobieństwo wystąpienia zda
 </div>
 </div>
 <p>2a. Oblicz pradopodobieństwo występowania każdego ze słów, w tym w zależności od typu wiadomości. Zbuduj dla nich słowniki prawdopodobieństwa. Przygotuj funkcje, które będą wykonywać te obliczenia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spam_split</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">spam_messages</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spam_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">spam_split</span><span class="p">:</span>
+    <span class="n">spam_words</span> <span class="o">+=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal_split</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">normal_messages</span><span class="p">]</span>
+<span class="n">normal_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">normal_split</span><span class="p">:</span>
+    <span class="n">normal_words</span> <span class="o">+=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">l_spam</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spam_words</span><span class="p">)</span>
+<span class="n">p_words_spam</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">x</span><span class="o">/</span><span class="n">l_spam</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">spam_words</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l_normal</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">normal_words</span><span class="p">)</span>
+<span class="n">p_words_normal</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">x</span><span class="o">/</span><span class="n">l_normal</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">normal_words</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>2b. Przygotuj klasę klasyfikatora Bayesa, który wykorzysta słowniki prawdopodobieństwa. Wykorzystaj poniższą strukturę:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">class</span> <span class="nc">NaiveBayesClassifier</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_spam</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_spam_words</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_ham_words</span> <span class="o">=</span> <span class="p">{}</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spam</span><span class="p">,</span><span class="n">ham</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_spam_words</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p_words</span><span class="p">(</span><span class="n">spam</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_ham_words</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p_words</span><span class="p">(</span><span class="n">ham</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">_p_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">mails</span><span class="p">):</span>
+        <span class="n">mail_tokenized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenize</span><span class="p">(</span><span class="n">mails</span><span class="p">)</span>
+        <span class="n">l_words</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mail_tokenized</span><span class="p">)</span>
+        <span class="n">p_words</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">x</span><span class="o">/</span><span class="n">l_words</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">mail_tokenized</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">return</span> <span class="n">p_words</span>
+    
+    <span class="k">def</span> <span class="nf">_tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">mails</span><span class="p">):</span>
+        <span class="n">split_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mails</span><span class="p">]</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">split_words</span><span class="p">:</span>
+            <span class="n">words</span> <span class="o">+=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">words</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbc</span> <span class="o">=</span> <span class="n">NaiveBayesClassifier</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">spam_messages</span><span class="p">,</span><span class="n">normal_messages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbc</span><span class="o">.</span><span class="n">p_ham_words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pamiętasz&#39;: 0.004291845493562232,
+ &#39;o&#39;: 0.060085836909871244,
+ &#39;naszym&#39;: 0.008583690987124463,
+ &#39;spotkaniu&#39;: 0.004291845493562232,
+ &#39;w&#39;: 0.06437768240343347,
+ &#39;potwierdź&#39;: 0.004291845493562232,
+ &#39;proszę&#39;: 0.008583690987124463,
+ &#39;przesłanie&#39;: 0.008583690987124463,
+ &#39;raportu&#39;: 0.004291845493562232,
+ &#39;do&#39;: 0.017167381974248927,
+ &#39;końca&#39;: 0.012875536480686695,
+ &#39;zapraszamy&#39;: 0.008583690987124463,
+ &#39;na&#39;: 0.05150214592274678,
+ &#39;zebranie&#39;: 0.004291845493562232,
+ &#39;zespołu&#39;: 0.008583690987124463,
+ &#39;środę&#39;: 0.008583690987124463,
+ &#39;sali&#39;: 0.004291845493562232,
+ &#39;zamówienie&#39;: 0.012875536480686695,
+ &#39;zostało&#39;: 0.02575107296137339,
+ &#39;przesyłka&#39;: 0.004291845493562232,
+ &#39;powinna&#39;: 0.004291845493562232,
+ &#39;dotrzeć&#39;: 0.004291845493562232,
+ &#39;ciągu&#39;: 0.008583690987124463,
+ &#39;dni&#39;: 0.004291845493562232,
+ &#39;mam&#39;: 0.004291845493562232,
+ &#39;że&#39;: 0.008583690987124463,
+ &#39;u&#39;: 0.004291845493562232,
+ &#39;ciebie&#39;: 0.004291845493562232,
+ &#39;wszystko&#39;: 0.004291845493562232,
+ &#39;chciałem&#39;: 0.004291845493562232,
+ &#39;tylko&#39;: 0.004291845493562232,
+ &#39;czy&#39;: 0.017167381974248927,
+ &#39;możemy&#39;: 0.004291845493562232,
+ &#39;się&#39;: 0.012875536480686695,
+ &#39;spotkać&#39;: 0.004291845493562232,
+ &#39;termin&#39;: 0.004291845493562232,
+ &#39;płatności&#39;: 0.004291845493562232,
+ &#39;za&#39;: 0.034334763948497854,
+ &#39;fakturę&#39;: 0.004291845493562232,
+ &#39;upływa&#39;: 0.004291845493562232,
+ &#39;dwa&#39;: 0.004291845493562232,
+ &#39;załączniku&#39;: 0.004291845493562232,
+ &#39;przesyłam&#39;: 0.008583690987124463,
+ &#39;dokumenty&#39;: 0.008583690987124463,
+ &#39;daj&#39;: 0.004291845493562232,
+ &#39;jeśli&#39;: 0.004291845493562232,
+ &#39;masz&#39;: 0.004291845493562232,
+ &#39;jakieś&#39;: 0.004291845493562232,
+ &#39;dziękujemy&#39;: 0.017167381974248927,
+ &#39;zakupy&#39;: 0.004291845493562232,
+ &#39;twoje&#39;: 0.012875536480686695,
+ &#39;spotkanie&#39;: 0.02145922746781116,
+ &#39;projektowe&#39;: 0.004291845493562232,
+ &#39;przełożone&#39;: 0.004291845493562232,
+ &#39;piątek&#39;: 0.004291845493562232,
+ &#39;potwierdzenie&#39;: 0.008583690987124463,
+ &#39;twoja&#39;: 0.008583690987124463,
+ &#39;wizyta&#39;: 0.004291845493562232,
+ &#39;lekarska&#39;: 0.004291845493562232,
+ &#39;jest&#39;: 0.004291845493562232,
+ &#39;umówiona&#39;: 0.004291845493562232,
+ &#39;poniedziałek&#39;: 0.008583690987124463,
+ &#39;odpowiemy&#39;: 0.004291845493562232,
+ &#39;nią&#39;: 0.004291845493562232,
+ &#39;twój&#39;: 0.034334763948497854,
+ &#39;lot&#39;: 0.004291845493562232,
+ &#39;został&#39;: 0.012875536480686695,
+ &#39;bilet&#39;: 0.004291845493562232,
+ &#39;zostanie&#39;: 0.004291845493562232,
+ &#39;wysłany&#39;: 0.004291845493562232,
+ &#39;adres&#39;: 0.012875536480686695,
+ &#39;zarządu&#39;: 0.004291845493562232,
+ &#39;odbędzie&#39;: 0.008583690987124463,
+ &#39;jutro&#39;: 0.004291845493562232,
+ &#39;możesz&#39;: 0.004291845493562232,
+ &#39;potwierdzić&#39;: 0.004291845493562232,
+ &#39;swoje&#39;: 0.008583690987124463,
+ &#39;uczestnictwo&#39;: 0.004291845493562232,
+ &#39;konferencji&#39;: 0.004291845493562232,
+ &#39;przyszłym&#39;: 0.004291845493562232,
+ &#39;rachunek&#39;: 0.004291845493562232,
+ &#39;telefoniczny&#39;: 0.004291845493562232,
+ &#39;ten&#39;: 0.004291845493562232,
+ &#39;miesiąc&#39;: 0.004291845493562232,
+ &#39;wynosi&#39;: 0.004291845493562232,
+ &#39;prosimy&#39;: 0.008583690987124463,
+ &#39;dokonanie&#39;: 0.008583690987124463,
+ &#39;załączeniu&#39;: 0.004291845493562232,
+ &#39;poprawioną&#39;: 0.004291845493562232,
+ &#39;wersję&#39;: 0.004291845493562232,
+ &#39;czekam&#39;: 0.004291845493562232,
+ &#39;szkolenie&#39;: 0.004291845493562232,
+ &#39;wprowadzające&#39;: 0.004291845493562232,
+ &#39;godzinie&#39;: 0.004291845493562232,
+ &#39;paczka&#39;: 0.004291845493562232,
+ &#39;została&#39;: 0.004291845493562232,
+ &#39;przewidywana&#39;: 0.008583690987124463,
+ &#39;mógłbyś&#39;: 0.004291845493562232,
+ &#39;przesłać&#39;: 0.004291845493562232,
+ &#39;prezentację&#39;: 0.004291845493562232,
+ &#39;jutrzejsze&#39;: 0.004291845493562232,
+ &#39;wniosek&#39;: 0.008583690987124463,
+ &#39;urlop&#39;: 0.004291845493562232,
+ &#39;życzymy&#39;: 0.004291845493562232,
+ &#39;udanego&#39;: 0.004291845493562232,
+ &#39;rejestrację&#39;: 0.004291845493562232,
+ &#39;nasz&#39;: 0.004291845493562232,
+ &#39;wkrótce&#39;: 0.004291845493562232,
+ &#39;otrzymasz&#39;: 0.004291845493562232,
+ &#39;faktury&#39;: 0.004291845493562232,
+ &#39;usługi&#39;: 0.004291845493562232,
+ &#39;otrzymaliśmy&#39;: 0.004291845493562232,
+ &#39;przypomnienie&#39;: 0.004291845493562232,
+ &#39;zaplanowanej&#39;: 0.004291845493562232,
+ &#39;konserwacji&#39;: 0.004291845493562232,
+ &#39;sieci&#39;: 0.004291845493562232,
+ &#39;najbliższy&#39;: 0.004291845493562232,
+ &#39;konto&#39;: 0.004291845493562232,
+ &#39;sprawdź&#39;: 0.004291845493562232,
+ &#39;nowe&#39;: 0.004291845493562232,
+ &#39;zostaną&#39;: 0.004291845493562232,
+ &#39;wysłane&#39;: 0.008583690987124463,
+ &#39;moglibyśmy&#39;: 0.004291845493562232,
+ &#39;przełożyć&#39;: 0.004291845493562232,
+ &#39;numer&#39;: 0.004291845493562232,
+ &#39;anulowane&#39;: 0.004291845493562232,
+ &#39;zgodnie&#39;: 0.004291845493562232,
+ &#39;z&#39;: 0.004291845493562232,
+ &#39;twoją&#39;: 0.004291845493562232,
+ &#39;dniu&#39;: 0.004291845493562232,
+ &#39;jutrzejszym&#39;: 0.004291845493562232}
+</pre></div>
+</div>
+</div>
+</div>
+<p>s2c. Zbuduj prostą metodę tokenizacji - rozbijania wiadomości na słowa.</p>
+<p>2d. Dodaj metodę trenowania (uczenia), która przyjmuje wiadomości wraz z etykietami tych wiadomości (spam/ham). Wykorzystaj funkcje z 2a.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NaiveBayesClassifier</span><span class="p">:</span>
@@ -553,12 +809,18 @@ P(B)P(B) to prawdopodobieństwo marginalne: prawdopodobieństwo wystąpienia zda
      <span class="c1"># Liczba wiadomości SPAM i normalnych</span>
         <span class="c1"># Liczba wszystkich słów w wiadomościach SPAM i normalnych</span>
         <span class="c1"># Zbiór wszystkich unikalnych słów</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_spam</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_spam_words</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_normal_words</span> <span class="o">=</span> <span class="p">{}</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">spam</span><span class="p">,</span><span class="n">ham</span><span class="p">):</span>
+        
     
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]</span>
     
     <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block
@@ -566,9 +828,24 @@ P(B)P(B) to prawdopodobieństwo marginalne: prawdopodobieństwo wystąpienia zda
 </div>
 </div>
 </div>
-<p>2c. Zbuduj prostą metodę tokenizacji - rozbijania wiadomości na słowa.</p>
-<p>2d. Dodaj metodę trenowania (uczenia), która przyjmuje wiadomości wraz z etykietami tych wiadomości (spam/ham). Wykorzystaj funkcje z 2a.</p>
 <p>2e. Zbuduj metodę przewidywania “predict”, która określi czy wpisana wiadomość jest spamem czy nie. Wynik podaj w formie ułamka prawdopodobieństwa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [33],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="ne">TypeError</span>: &#39;int&#39; object is not callable
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="lancuch-markowa">
 <h2>Łańcuch Markowa<a class="headerlink" href="#lancuch-markowa" title="Permalink to this heading">#</a></h2>
