@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1. UM 4 - ćwiczenia r';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uczenie Maszynowe - ćwiczenia 4.5" href="1.%20UM%204.5%20-%20zadania%20dodatkowe.html" />
     <link rel="prev" title="Uczenie Maszynowe - ćwiczenia 3 (plik roboczy)" href="1.%20UM%203%20-%20%C4%87wiczenia%20r.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,11 +184,25 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="1.%20UM%204%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 4</a></li>
 
-
 <li class="toctree-l1"><a class="reference internal" href="1.%20UM%203.html">Uczenie Maszynowe - Wykład 3</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="1.%20UM%203%20-%20%C4%87wiczenia%20r.html">Uczenie Maszynowe - ćwiczenia 3 (plik roboczy)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Uczenie Maszynowe - ćwiczenia 4 (plik roboczy)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204.5%20-%20zadania%20dodatkowe.html">Uczenie Maszynowe - ćwiczenia 4.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%205%20-%20%C4%87wiczenia%20%28%2Btroch%C4%99%20wyk%C5%82ad%29.html">Uczenie Maszynowe - ćwiczenia 5</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204.html">Uczenie Maszynowe - Wykład 4</a></li>
+
+
+
+
+
+
+
 
 </ul>
 
@@ -1182,7 +1197,7 @@ Ewaluację przeprowadzamy z wykorzystaniem miar - jak na wykładzie. Miary dost�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x25fcea42670&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x2036e189d30&gt;
 </pre></div>
 </div>
 <img alt="_images/1208ebc940a1b42fb514f8503f6406f354fba6e6e23b03fd1156b71e78de5a1c.png" src="_images/1208ebc940a1b42fb514f8503f6406f354fba6e6e23b03fd1156b71e78de5a1c.png" />
@@ -1349,15 +1364,17 @@ Zbiór testowy: MSE: 0.56, R2: 0.58
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="n">X_sel</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span> <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">]]</span>
 
 
-<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">include_bias</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">X_train_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_sel</span><span class="p">)</span>
-<span class="n">X_test_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span> <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">]])</span>
+<span class="n">X_test_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span>  <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">]])</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_poly</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -1377,7 +1394,274 @@ Zbiór testowy: MSE: 0.56, R2: 0.58
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zbiór treningowy: MSE: 0.60, R2: 0.55
-Zbiór testowy: MSE: 78797156761168640.00, R2: -60131728391350296.00
+Zbiór testowy: MSE: 1.18, R2: 0.10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">california</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">california</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">california</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">california</span><span class="o">.</span><span class="n">target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">california</span><span class="o">.</span><span class="n">feature_names</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Target&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">combinations</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span> <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">],</span> 
+                <span class="p">[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;HouseAge&#39;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s1">&#39;HouseAge&#39;</span><span class="p">,</span> <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;MedInc&#39;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span> <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;HouseAge&#39;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s1">&#39;MedInc&#39;</span><span class="p">,</span> <span class="s1">&#39;HouseAge&#39;</span><span class="p">,</span> <span class="s1">&#39;AveRooms&#39;</span><span class="p">,</span> <span class="s1">&#39;AveBedrms&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="s1">&#39;AveOccup&#39;</span><span class="p">,</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitude&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fitt</span><span class="p">(</span><span class="n">combination</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">bias</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">X_sel</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">combination</span><span class="p">]</span> <span class="c1"># HERE</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="n">inter</span><span class="p">,</span> <span class="n">include_bias</span> <span class="o">=</span> <span class="n">bias</span><span class="p">)</span> <span class="c1"># HERE</span>
+    <span class="n">X_train_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_sel</span><span class="p">)</span>
+    <span class="n">X_test_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">combination</span><span class="p">])</span> <span class="c1"># HERE</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_poly</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_train_pred_poly</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_poly</span><span class="p">)</span>
+    <span class="n">y_test_pred_poly</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_poly</span><span class="p">)</span>
+
+    <span class="n">test_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred_poly</span><span class="p">)</span>
+    <span class="n">train_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred_poly</span><span class="p">)</span>
+
+    <span class="n">test_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred_poly</span><span class="p">)</span>
+    <span class="n">train_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred_poly</span><span class="p">)</span>
+
+<span class="c1">#     print(f&quot;Zbiór treningowy: MSE: {train_mse:.2f}, R2: {train_r2:.2f}&quot;)</span>
+<span class="c1">#     print(f&quot;Zbiór testowy: MSE: {test_mse:.2f}, R2: {test_r2:.2f}&quot;)</span>
+    
+    <span class="k">return</span> <span class="n">train_mse</span><span class="p">,</span> <span class="n">test_mse</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+                <span class="n">fitt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 2 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 2 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 2 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 2 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 3 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 3 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 3 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 3 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 4 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 4 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 4 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 4 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 5 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 5 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 5 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 5 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 6 True True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 6 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 6 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 6 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 7 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 7 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 7 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 7 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 8 True True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 8 True False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 8 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 8 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 9 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 9 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 9 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;] 9 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 True True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 False True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 False False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 True True
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 True False
+[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 2 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 2 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 2 False True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 2 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 3 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 3 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 3 False True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 3 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 4 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 4 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 4 False True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 4 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 5 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 5 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 5 False True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 5 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 6 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 6 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 6 False True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 6 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 7 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 7 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 7 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 7 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 8 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 8 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 8 False True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 8 False False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 9 True True
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 9 True False
+[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 9 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;MedInc&#39;] 9 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 2 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 3 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 True True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 4 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 5 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 True False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 False True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 6 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 7 False False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 8 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 True True
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 True False
+[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;AveRooms&#39;, &#39;Latitude&#39;, &#39;HouseAge&#39;] 9 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 2 True True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 2 True False
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 2 False True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 2 False False
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 3 True True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 3 True False
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 3 False True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 3 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 4 True True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 4 True False
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 4 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 4 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 5 True True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 5 True False
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 5 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 5 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 6 True True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 6 True False
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 6 False True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 6 False False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 7 True True
+[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 7 True False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;, &#39;Latitude&#39;, &#39;Longitude&#39;] 7 False True
 </pre></div>
 </div>
 </div>
@@ -1393,6 +1677,88 @@ Dokładność na obu zbiorach jest wysoka (średnia)
 </pre></div>
 </div>
 <p>Co oznacza każdy z tych przypadków?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cfull</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c1_test_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">r2_train</span><span class="p">,</span> <span class="n">r2_test</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">c1_test_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_test</span><span class="p">)</span>
+    
+<span class="n">cfull_test_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">r2_train</span><span class="p">,</span> <span class="n">r2_test</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">(</span><span class="n">cfull</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cfull_test_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">c1_test_results</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="c1"># plt.plot(np.arange(2,5),cfull_test_results,c=&#39;k&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="n">test_results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">r2_train</span><span class="p">,</span> <span class="n">r2_test</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">test_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_test</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">test_results</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/df08ebd69a6106c338b0f9a014fe251798a61e8fd8f87149f83c9b9918cf65f6.png" src="_images/df08ebd69a6106c338b0f9a014fe251798a61e8fd8f87149f83c9b9918cf65f6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c1_test_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">c1_train_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">r2_train</span><span class="p">,</span> <span class="n">r2_test</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">c1_test_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_test</span><span class="p">)</span>
+    <span class="n">c1_train_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_train</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span><span class="n">c1_test_results</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span><span class="n">c1_train_results</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25bbeff46d0&gt;
+</pre></div>
+</div>
+<img alt="_images/e0cdcf7b0f7d15636b302bf650430324380947505cb8a982d47a3a71068de721.png" src="_images/e0cdcf7b0f7d15636b302bf650430324380947505cb8a982d47a3a71068de721.png" />
+</div>
+</div>
 </section>
 <section id="zadanie-6-regularyzacja-modeli">
 <h2>Zadanie 6. Regularyzacja modeli<a class="headerlink" href="#zadanie-6-regularyzacja-modeli" title="Permalink to this heading">#</a></h2>
@@ -1404,7 +1770,89 @@ Lasso (L1): Dodaje wartość absolutną współczynników do funkcji kosztu. Las
 </div>
 <p>Dzięki regularyzacji model staje się bardziej ogólny i może lepiej działać na nowych danych.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>6a. Wykorzystaj modele Ridge i Lasso (from sklearn.linear_model import Ridge, Lasso) by wytrenować regresję wielomianową dla naszego problemu. Zapoznaj się dokumentacją tych modeli. Przetestuj wyniki regresji z wykorzystaniem różnych parametrów dla tych modeli.
+
+6b.Wyrysuj krzywe złozoności dla modeli Ridge, Lasso, ElasticNet (uwzględnij rózne parametry alpha) i porownaj wyniki ze modelem regresji wielomianowej.
 </pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">ElasticNet</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">ElasticNet</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combination</span> <span class="o">=</span> <span class="n">c1</span>
+<span class="n">degree</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">m</span><span class="p">()</span>
+    <span class="n">X_sel</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">combination</span><span class="p">]</span> <span class="c1"># HERE</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">include_bias</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># HERE</span>
+    <span class="n">X_train_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_sel</span><span class="p">)</span>
+    <span class="n">X_test_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">combination</span><span class="p">])</span> <span class="c1"># HERE</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_poly</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_train_pred_poly</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_poly</span><span class="p">)</span>
+    <span class="n">y_test_pred_poly</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_poly</span><span class="p">)</span>
+
+    <span class="n">test_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred_poly</span><span class="p">)</span>
+    <span class="n">train_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred_poly</span><span class="p">)</span>
+
+    <span class="n">test_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred_poly</span><span class="p">)</span>
+    <span class="n">train_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred_poly</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zbiór treningowy: MSE: </span><span class="si">{</span><span class="n">train_mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R2: </span><span class="si">{</span><span class="n">train_r2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zbiór testowy: MSE: </span><span class="si">{</span><span class="n">test_mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, R2: </span><span class="si">{</span><span class="n">test_r2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._base.LinearRegression&#39;&gt;
+Zbiór treningowy: MSE: 0.57, R2: 0.57
+Zbiór testowy: MSE: 0.60, R2: 0.54
+&lt;class &#39;sklearn.linear_model._ridge.Ridge&#39;&gt;
+Zbiór treningowy: MSE: 0.58, R2: 0.57
+Zbiór testowy: MSE: 0.60, R2: 0.54
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_ridge.py:204: LinAlgWarning: Ill-conditioned matrix (rcond=5.1658e-18): result may not be accurate.
+  return linalg.solve(A, Xy, assume_a=&quot;pos&quot;, overwrite_a=True).T
+C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_coordinate_descent.py:678: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 4.911e+03, tolerance: 2.207e+00
+  model = cd_fast.enet_coordinate_descent(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._coordinate_descent.Lasso&#39;&gt;
+Zbiór treningowy: MSE: 0.59, R2: 0.56
+Zbiór testowy: MSE: 0.61, R2: 0.54
+&lt;class &#39;sklearn.linear_model._coordinate_descent.ElasticNet&#39;&gt;
+Zbiór treningowy: MSE: 0.59, R2: 0.56
+Zbiór testowy: MSE: 0.61, R2: 0.53
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_coordinate_descent.py:678: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 4.911e+03, tolerance: 2.207e+00
+  model = cd_fast.enet_coordinate_descent(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fitt</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6366515282984468, 0.6460918476232856)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1460,6 +1908,15 @@ Efektywność przy małych zbiorach danych: Pomaga maksymalnie wykorzystać dost
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 3 (plik roboczy)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="1.%20UM%204.5%20-%20zadania%20dodatkowe.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 4.5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

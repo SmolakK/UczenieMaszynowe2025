@@ -1,0 +1,92 @@
+Traceback (most recent call last):
+  File "C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\ProgramData\Anaconda3\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Generate a more non-linear dataset
+np.random.seed(42)
+X_nl = np.sort(np.random.rand(200, 1) * 10, axis=0)  # Random values between 0 and 10
+y_nl = np.sin(X_nl).ravel() + np.random.normal(0, 0.2, X_nl.shape[0])  # Sinusoidal with noise
+
+# Split into training and testing sets
+X_train_nl, X_test_nl, y_train_nl, y_test_nl = train_test_split(X_nl, y_nl, test_size=0.2, random_state=42)
+
+# Interactive function for non-linear example
+def interactive_tree_with_plot_nonlinear(max_depth=3, min_samples_split=2, min_samples_leaf=1):
+    # Train the Decision Tree Regressor with selected hyperparameters
+    regressor = DecisionTreeRegressor(
+        max_depth=max_depth, 
+        min_samples_split=min_samples_split, 
+        min_samples_leaf=min_samples_leaf,
+        random_state=42
+    )
+    regressor.fit(X_train_nl, y_train_nl)
+    
+    # Predict on the training and test set
+    y_pred_train_nl = regressor.predict(X_train_nl)
+    y_pred_test_nl = regressor.predict(X_test_nl)
+    
+    # Calculate Mean Squared Error
+    train_mse = mean_squared_error(y_train_nl, y_pred_train_nl)
+    test_mse = mean_squared_error(y_test_nl, y_pred_test_nl)
+    
+    # Create subplots for predictions and tree structure
+    fig, axs = plt.subplots(2, 1, figsize=(18, 16))
+    
+    # Plot the data and the regression tree predictions
+    X_range = np.linspace(X_nl.min(), X_nl.max(), 500).reshape(-1, 1)
+    y_pred_range = regressor.predict(X_range)
+    
+    axs[0].scatter(X_train_nl, y_train_nl, color='blue', label='Training Data', alpha=0.6)
+    axs[0].scatter(X_test_nl, y_test_nl, color='orange', label='Test Data', alpha=0.6)
+    axs[0].plot(X_range, y_pred_range, color='red', label='Tree Prediction', linewidth=2)
+    axs[0].set_title(f"Decision Tree Regressor (Non-Linear Example)\nTrain MSE: {train_mse:.2f}, Test MSE: {test_mse:.2f}")
+    axs[0].set_xlabel("Feature")
+    axs[0].set_ylabel("Target")
+    axs[0].legend()
+    axs[0].grid(True)
+    
+    # Visualize the decision tree structure
+    plot_tree(regressor, filled=True, feature_names=["Feature"], ax=axs[1])
+    axs[1].set_title("Decision Tree Structure")
+    
+    plt.tight_layout()
+    plt.show()
+
+# Interactive widgets for hyperparameters
+interact(
+    interactive_tree_with_plot_nonlinear,
+    max_depth=widgets.IntSlider(min=1, max=10, step=1, value=3, description='Max Depth'),
+    min_samples_split=widgets.IntSlider(min=2, max=20, step=1, value=2, description='Min Samples Split'),
+    min_samples_leaf=widgets.IntSlider(min=1, max=10, step=1, value=1, description='Min Samples Leaf')
+)
+
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Input [1;32mIn [8][0m, in [0;36m<cell line: 7>[1;34m()[0m
+[0;32m      4[0m y_nl [38;5;241m=[39m np[38;5;241m.[39msin(X_nl)[38;5;241m.[39mravel() [38;5;241m+[39m np[38;5;241m.[39mrandom[38;5;241m.[39mnormal([38;5;241m0[39m, [38;5;241m0.2[39m, X_nl[38;5;241m.[39mshape[[38;5;241m0[39m])  [38;5;66;03m# Sinusoidal with noise[39;00m
+[0;32m      6[0m [38;5;66;03m# Split into training and testing sets[39;00m
+[1;32m----> 7[0m X_train_nl, X_test_nl, y_train_nl, y_test_nl [38;5;241m=[39m [43mtrain_test_split[49m(X_nl, y_nl, test_size[38;5;241m=[39m[38;5;241m0.2[39m, random_state[38;5;241m=[39m[38;5;241m42[39m)
+[0;32m      9[0m [38;5;66;03m# Interactive function for non-linear example[39;00m
+[0;32m     10[0m [38;5;28;01mdef[39;00m [38;5;21minteractive_tree_with_plot_nonlinear[39m(max_depth[38;5;241m=[39m[38;5;241m3[39m, min_samples_split[38;5;241m=[39m[38;5;241m2[39m, min_samples_leaf[38;5;241m=[39m[38;5;241m1[39m):
+[0;32m     11[0m     [38;5;66;03m# Train the Decision Tree Regressor with selected hyperparameters[39;00m
+
+[1;31mNameError[0m: name 'train_test_split' is not defined
+NameError: name 'train_test_split' is not defined
+
