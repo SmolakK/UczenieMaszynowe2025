@@ -1,0 +1,1520 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Uczenie Maszynowe - ćwiczenia 6 &#8212; Uczenie Maszynowe 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1. UM 6 - ćwiczenia';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Uczenie Maszynowe - Wykład 4" href="1.%20UM%204.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="1.%20UM%201.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1.%20UM%201.html">
+                    Uczenie Maszynowe - Wykład 1
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%201%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 1</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%202%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%202.html">Uczenie Maszynowe - Wykład 2</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 4</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203.html">Uczenie Maszynowe - Wykład 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203%20-%20%C4%87wiczenia%20r.html">Uczenie Maszynowe - ćwiczenia 3 (plik roboczy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204%20-%20%C4%87wiczenia%20r.html">Uczenie Maszynowe - ćwiczenia 4 (plik roboczy)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204.5%20-%20zadania%20dodatkowe.html">Uczenie Maszynowe - ćwiczenia 4.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%205%20-%20%C4%87wiczenia%20%28%2Btroch%C4%99%20wyk%C5%82ad%29.html">Uczenie Maszynowe - ćwiczenia 5</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204.html">Uczenie Maszynowe - Wykład 4</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uczenie Maszynowe - ćwiczenia 6</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1. UM 6 - ćwiczenia.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1. UM 6 - ćwiczenia.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Uczenie Maszynowe - ćwiczenia 6</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uczenie Maszynowe - ćwiczenia 6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#klasyfikacja">Klasyfikacja</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-klasyfikacji-na-przykladzie-regresji-logistycznej">Problem klasyfikacji - na przykładzie regresji logistycznej</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcja-decyzyjna-w-regresji-logistycznej">Funkcja decyzyjna w regresji logistycznej</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importowanie-bibliotek">1. Importowanie bibliotek</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-klasyfikacyjny">2. Problem klasyfikacyjny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wstepny-preprocessing-danych">Wstępny preprocessing danych</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trenowanie-modelu">Trenowanie modelu</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proces-predykcji">Proces predykcji</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wizualizacja-modelu">Wizualizacja modelu</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zdolnosc-do-radzenia-sobie-modelow-z-niepewnoscia">Zdolność do radzenia sobie modelów z niepewnością</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcja-decyzyjna-algorytmu-klasyfikacyjnego">Funkcja decyzyjna algorytmu klasyfikacyjnego</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ewaluacja-modelu">Ewaluacja modelu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macierz-pomylek-confusion-matrix"><strong>1. Macierz pomyłek (Confusion Matrix)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-dokladnosc"><strong>2. Accuracy (dokładność)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadania">Zadania</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metody-preprocessingu-w-klasyfikacji-ml">Metody preprocessingu w klasyfikacji ML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-1-przeprowadz-calkowity-proces-uczenia-do-problemu-klasyfikacji-z-wykorzystaniem-podanego-kodu-rozwin-go-o-element-skalowania-danych-wykorzystaj-podane-metody-okresl-jak-wplynely-one-na-dokladnosc-modelu">Zadanie 1. Przeprowadź całkowity proces uczenia do problemu klasyfikacji z wykorzystaniem podanego kodu. Rozwiń go o element skalowania danych. Wykorzystaj podane metody. Określ jak wpłynęły one na dokładność modelu.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-2-porownanie-algorytmow-klasyfikacyjnych">Zadanie 2. Porównanie algorytmów klasyfikacyjnych</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uczenie-maszynowe-cwiczenia-6">
+<h1>Uczenie Maszynowe - ćwiczenia 6<a class="headerlink" href="#uczenie-maszynowe-cwiczenia-6" title="Permalink to this heading">#</a></h1>
+<p>Klasyfikacja - ćwiczenia dotyczące klasyfikacji wraz z wprowadzeniem teoretycznym do tematu klasyfikacji.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="klasyfikacja">
+<h1>Klasyfikacja<a class="headerlink" href="#klasyfikacja" title="Permalink to this heading">#</a></h1>
+<section id="problem-klasyfikacji-na-przykladzie-regresji-logistycznej">
+<h2>Problem klasyfikacji - na przykładzie regresji logistycznej<a class="headerlink" href="#problem-klasyfikacji-na-przykladzie-regresji-logistycznej" title="Permalink to this heading">#</a></h2>
+<section id="funkcja-decyzyjna-w-regresji-logistycznej">
+<h3>Funkcja decyzyjna w regresji logistycznej<a class="headerlink" href="#funkcja-decyzyjna-w-regresji-logistycznej" title="Permalink to this heading">#</a></h3>
+<p>Regresja logistyczna to algorytm klasyfikacyjny stosowany do zadań binarnej klasyfikacji. Funkcja decyzyjna jest określona jako:</p>
+<div class="math notranslate nohighlight">
+\[
+P(y=1 | x) = \sigma(w^T x + b)
+\]</div>
+<p>gdzie:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \sigma(z) = \frac{1}{1 + e^{-z}} \)</span> – funkcja sigmoid (przekształca wyniki w zakres <span class="math notranslate nohighlight">\( (0, 1) \)</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\( w \)</span> – wektor wag,</p></li>
+<li><p><span class="math notranslate nohighlight">\( x \)</span> – wektor cech,</p></li>
+<li><p><span class="math notranslate nohighlight">\( b \)</span> – bias (przesunięcie).</p></li>
+</ul>
+<p>Funkcja sigmoid zwraca prawdopodobieństwo przynależności próbki do klasy <span class="math notranslate nohighlight">\( y=1 \)</span>.</p>
+<section id="importowanie-bibliotek">
+<h4>1. Importowanie bibliotek<a class="headerlink" href="#importowanie-bibliotek" title="Permalink to this heading">#</a></h4>
+<p>Najpierw musimy zaimportować niezbędne biblioteki, które pozwolą nam przeprowadzić analizę danych, stworzyć model i ocenić jego wyniki. W tym przypadku będziemy korzystać z takich bibliotek jak numpy, pandas, sklearn oraz matplotlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-klasyfikacyjny">
+<h4>2. Problem klasyfikacyjny<a class="headerlink" href="#problem-klasyfikacyjny" title="Permalink to this heading">#</a></h4>
+<p>Za pomocą funkcji load_iris załadujemy wbudowany zbiór danych Iris, który zawiera pomiary czterech cech dla trzech gatunków kwiatów Iris. Dane te zostały już przygotowane i nie wymagają dodatkowego czyszczenia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># cechy (długość i szerokość działki oraz płatka)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>  <span class="c1"># etykiety (gatunki kwiatu)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0
+0  0
+1  0
+2  0
+3  0
+4  0
+[&#39;setosa&#39; &#39;versicolor&#39; &#39;virginica&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>X to macierz cech, która zawiera cztery zmienne: długość działki, szerokość działki, długość płatka, szerokość płatka.</p>
+<p>y to wektor etykiet, który zawiera numer klasy, czyli gatunek kwiatu (0: Setosa, 1: Versicolor, 2: Virginica).</p>
+</section>
+<section id="wstepny-preprocessing-danych">
+<h4>Wstępny preprocessing danych<a class="headerlink" href="#wstepny-preprocessing-danych" title="Permalink to this heading">#</a></h4>
+<p>Ten etap jest bardzo zbliżony do procesu wstępnego przetwarzania danych w regresji. Możemy wstępnie przeanalizować dane, przeszukać je pod kątem brakujących wartości i tym podobne.</p>
+<p>Zaczynamy od rozbicia danych na zbiory uczące i testowe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">),</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_train</span><span class="p">)],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.5</td>
+      <td>2.4</td>
+      <td>3.7</td>
+      <td>1.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6.3</td>
+      <td>2.8</td>
+      <td>5.1</td>
+      <td>1.5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.4</td>
+      <td>3.1</td>
+      <td>5.5</td>
+      <td>1.8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6.6</td>
+      <td>3.0</td>
+      <td>4.4</td>
+      <td>1.4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.2</td>
+      <td>3.6</td>
+      <td>6.1</td>
+      <td>2.5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>6.1</td>
+      <td>2.8</td>
+      <td>4.0</td>
+      <td>1.3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>4.9</td>
+      <td>2.5</td>
+      <td>4.5</td>
+      <td>1.7</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>5.8</td>
+      <td>4.0</td>
+      <td>1.2</td>
+      <td>0.2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>5.8</td>
+      <td>2.6</td>
+      <td>4.0</td>
+      <td>1.2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>7.1</td>
+      <td>3.0</td>
+      <td>5.9</td>
+      <td>2.1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>105 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span><span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/0a21fa4afd35d2b094054bf1302dab3b206d6349342c72643be90b3401aed216.png" src="_images/0a21fa4afd35d2b094054bf1302dab3b206d6349342c72643be90b3401aed216.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1974da853d0&gt;
+</pre></div>
+</div>
+<img alt="_images/2e735df233d8ee145c3b9aa6ab889a50a8fbeccb745489d203f9267a9f8bb302.png" src="_images/2e735df233d8ee145c3b9aa6ab889a50a8fbeccb745489d203f9267a9f8bb302.png" />
+</div>
+</div>
+</section>
+<section id="trenowanie-modelu">
+<h4>Trenowanie modelu<a class="headerlink" href="#trenowanie-modelu" title="Permalink to this heading">#</a></h4>
+<p>Proces trenowania przebiega zgodnie z ideą implementacji modeli w scikit-learn. Korzystamy z metod fit(), fit_predict() i predict() do treningu i ewaluacji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;X_train_scaled&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="proces-predykcji">
+<h4>Proces predykcji<a class="headerlink" href="#proces-predykcji" title="Permalink to this heading">#</a></h4>
+<p>Predykcją modelu jest oczekiwana klasa obiektu. W tym przypadku mamy do czynienia z predykcją wieloklasową. Zatem oczekiwanym wynikiem jest jedna z klas.</p>
+<p>Metoda predict() zwraca przeiwidywane klasy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_train_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2,
+       2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 1, 2,
+       2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 2, 2, 1, 2, 2,
+       2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1,
+       2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Które możemy zestawić z oczekiwaną klasą w celu oceny naszego modelu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_train_pred</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
+<span class="n">compare</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;True&#39;</span><span class="p">,</span><span class="s1">&#39;Predicted&#39;</span><span class="p">]</span>
+<span class="n">compare</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>True</th>
+      <th>Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>105 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="wizualizacja-modelu">
+<h4>Wizualizacja modelu<a class="headerlink" href="#wizualizacja-modelu" title="Permalink to this heading">#</a></h4>
+<p>Możemy wybrać tylko dwie cechy (np. długość działki i długość płatka), aby móc zobaczyć granice klas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Siatka punktów do wyrysowania tła</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">))</span>
+
+<span class="c1"># Predykcja dla siatki punktów</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Granice klas regresji logistycznej&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Długość działki&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Długość płatka&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Local\Temp\ipykernel_19124\2104552861.py:16: UserWarning: You passed a edgecolor/edgecolors (&#39;k&#39;) for an unfilled marker (&#39;x&#39;).  Matplotlib is ignoring the edgecolor in favor of the facecolor.  This behavior may change in the future.
+  plt.scatter(X_test_scaled[:, 0], X_test_scaled[:, 1], c=y_test, cmap=plt.cm.Spectral, edgecolors=&#39;k&#39;, marker=&#39;x&#39;)
+</pre></div>
+</div>
+<img alt="_images/3b31f6998acb30a06a0a0a227992e90d61d3cdd9dd0d29670327b899a27f13f4.png" src="_images/3b31f6998acb30a06a0a0a227992e90d61d3cdd9dd0d29670327b899a27f13f4.png" />
+</div>
+</div>
+</section>
+<section id="zdolnosc-do-radzenia-sobie-modelow-z-niepewnoscia">
+<h4>Zdolność do radzenia sobie modelów z niepewnością<a class="headerlink" href="#zdolnosc-do-radzenia-sobie-modelow-z-niepewnoscia" title="Permalink to this heading">#</a></h4>
+<p>W regresji logistycznej wynik modelu to nie jedynie przypisana etykieta (np. 0 lub 1 w klasyfikacji binarnej), ale także wartość prawdopodobieństwa, która wskazuje, jak pewny jest model co do swojej prognozy. Prawdopodobieństwo to jest obliczane na podstawie funkcji logistycznej, która mapuje liniową kombinację cech wejściowych na zakres od 0 do 1. Daje to wgląd w stopień pewności, z jakim model przypisuje próbkę do konkretnej klasy.</p>
+<p>Scikit-learn dostarcza metodę ‘predict_proba()’, która dostarcza miary pewności predykcji:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predykcja prawdopodobieństw</span>
+<span class="n">y_train_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_train_prob</span><span class="p">),</span><span class="n">compare</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>True</th>
+      <th>Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8.686659e-07</td>
+      <td>0.021324</td>
+      <td>0.978675</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.757011e-07</td>
+      <td>0.013138</td>
+      <td>0.986862</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.298487e-07</td>
+      <td>0.008803</td>
+      <td>0.991197</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.058837e-07</td>
+      <td>0.010218</td>
+      <td>0.989782</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.576740e-08</td>
+      <td>0.004681</td>
+      <td>0.995319</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>3.162684e-07</td>
+      <td>0.012968</td>
+      <td>0.987032</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>6.121652e-06</td>
+      <td>0.017965</td>
+      <td>0.982029</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>7.193460e-06</td>
+      <td>0.002460</td>
+      <td>0.997533</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>5.244122e-07</td>
+      <td>0.016647</td>
+      <td>0.983353</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2.435995e-08</td>
+      <td>0.010558</td>
+      <td>0.989442</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>105 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>Oczywiście ich suma wynosi 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_prob</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="funkcja-decyzyjna-algorytmu-klasyfikacyjnego">
+<h3>Funkcja decyzyjna algorytmu klasyfikacyjnego<a class="headerlink" href="#funkcja-decyzyjna-algorytmu-klasyfikacyjnego" title="Permalink to this heading">#</a></h3>
+<p>Funkcja sigmoidalna, często używana w regresji logistycznej, jest funkcją matematyczną, która przekształca dowolną wartość na zakres od 0 do 1. Jest to funkcja o kształcie litery “S” i jest wykorzystywana do modelowania prawdopodobieństw w problemach klasyfikacyjnych.</p>
+<p>Funkcja sigmoidalna mapuje każdą wartość xx na wynik między 0 a 1:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Jeśli x jest bardzo duże (np. x→+∞), σ(x)→1,
+Jeśli x jest bardzo małe (np. x→−∞), σ(x)→0,
+Gdy x=0, σ(x)=0.5σ.
+</pre></div>
+</div>
+<p>Funkcja sigmoidalna jest często używana w regresji logistycznej, gdzie x jest kombinacją liniową cech wejściowych, a wynik funkcji σ(x) to prawdopodobieństwo przynależności do jednej z klas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Definicja funkcji sigmoidalnej</span>
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Przykładowe dane wejściowe (można to traktować jako wynik funkcji decyzyjnej)</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># Zakres od -10 do 10</span>
+
+<span class="c1"># Zastosowanie funkcji sigmoidalnej na przykładzie</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span>
+
+<span class="c1"># Rysowanie wykresu funkcji sigmoidalnej</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Funkcja sigmoidalna&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Granica decyzji (p = 0.5)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x = 0&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Funkcja Sigmoidalna&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wartości wejściowe (x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Prawdopodobieństwo (σ(x))&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/962bf53567bcd93536fce730b673b2e3db43275fa659f3f9778f7e19c2249c31.png" src="_images/962bf53567bcd93536fce730b673b2e3db43275fa659f3f9778f7e19c2249c31.png" />
+</div>
+</div>
+</section>
+<section id="ewaluacja-modelu">
+<h3>Ewaluacja modelu<a class="headerlink" href="#ewaluacja-modelu" title="Permalink to this heading">#</a></h3>
+<p>Jak zapewne sie domyślacie - metody oceny modelu stosowane w regresji, w klasyfikacji nie mają zastosowania. Podobnie jednak, metod jest kilka. Spójrzmy na najprostsze z nich:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_train_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3523809523809524
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0, 22,  9],
+       [ 0,  0, 37],
+       [ 0,  0, 37]], dtype=int64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.28888888888888886
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  0, 19],
+       [ 0,  0, 13],
+       [ 0,  0, 13]], dtype=int64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_pred</span><span class="p">),</span><span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/864892638c4d055800f4aa72e9adeab3d3e7988590e4d15eddaf61eb965f40f3.png" src="_images/864892638c4d055800f4aa72e9adeab3d3e7988590e4d15eddaf61eb965f40f3.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="macierz-pomylek-confusion-matrix">
+<h2><strong>1. Macierz pomyłek (Confusion Matrix)</strong><a class="headerlink" href="#macierz-pomylek-confusion-matrix" title="Permalink to this heading">#</a></h2>
+<p>Macierz pomyłek to tablica, która pokazuje liczbę poprawnych i błędnych klasyfikacji dla każdej klasy. Składa się z czterech kluczowych wartości (dla klasyfikacji binarnej):</p>
+<ul class="simple">
+<li><p><strong>True Positive (TP)</strong>: Próbki poprawnie zaklasyfikowane jako pozytywne.</p></li>
+<li><p><strong>True Negative (TN)</strong>: Próbki poprawnie zaklasyfikowane jako negatywne.</p></li>
+<li><p><strong>False Positive (FP)</strong>: Próbki błędnie zaklasyfikowane jako pozytywne (tzw. fałszywe alarmy).</p></li>
+<li><p><strong>False Negative (FN)</strong>: Próbki błędnie zaklasyfikowane jako negatywne.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Predykcja pozytywna</p></th>
+<th class="head"><p>Predykcja negatywna</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Prawdziwie pozytywne (TP)</strong></p></td>
+<td><p>Liczba próbek</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fałszywie pozytywne (FP)</strong></p></td>
+<td><p>Liczba próbek</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Fałszywie negatywne (FN)</strong></p></td>
+<td><p>-</p></td>
+<td><p>Liczba próbek</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Prawdziwie negatywne (TN)</strong></p></td>
+<td><p>-</p></td>
+<td><p>Liczba próbek</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="accuracy-dokladnosc">
+<h2><strong>2. Accuracy (dokładność)</strong><a class="headerlink" href="#accuracy-dokladnosc" title="Permalink to this heading">#</a></h2>
+<p>Accuracy mierzy odsetek poprawnie zaklasyfikowanych próbek w całym zbiorze danych:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\]</div>
+<ul class="simple">
+<li><p><strong>Zaleta</strong>: Proste do zrozumienia i obliczenia.</p></li>
+<li><p><strong>Wada</strong>: Niewystarczające w przypadku danych niezbalansowanych (np. 95% próbek w jednej klasie).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="zadania">
+<h2>Zadania<a class="headerlink" href="#zadania" title="Permalink to this heading">#</a></h2>
+<section id="metody-preprocessingu-w-klasyfikacji-ml">
+<h3>Metody preprocessingu w klasyfikacji ML<a class="headerlink" href="#metody-preprocessingu-w-klasyfikacji-ml" title="Permalink to this heading">#</a></h3>
+<p>Preprocessing danych jest kluczowym krokiem w procesie budowy modeli. Pomaga poprawić jakość danych oraz dostosować je do wymagań algorytmów klasyfikacji. Szczegółowy opis na wykładzie. Tymczasem jednak zadanie polegać będzie na zastosowaniu jednej z technik do naszego problemu klasyfikacyjnego.</p>
+</section>
+<section id="zadanie-1-przeprowadz-calkowity-proces-uczenia-do-problemu-klasyfikacji-z-wykorzystaniem-podanego-kodu-rozwin-go-o-element-skalowania-danych-wykorzystaj-podane-metody-okresl-jak-wplynely-one-na-dokladnosc-modelu">
+<h3>Zadanie 1. Przeprowadź całkowity proces uczenia do problemu klasyfikacji z wykorzystaniem podanego kodu. Rozwiń go o element skalowania danych. Wykorzystaj podane metody. Określ jak wpłynęły one na dokładność modelu.<a class="headerlink" href="#zadanie-1-przeprowadz-calkowity-proces-uczenia-do-problemu-klasyfikacji-z-wykorzystaniem-podanego-kodu-rozwin-go-o-element-skalowania-danych-wykorzystaj-podane-metody-okresl-jak-wplynely-one-na-dokladnosc-modelu" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>StandardScaler: Normalizacja cech do średniej 0 i odchylenia standardowego 1.
+MinMaxScaler: Skalowanie cech do zakresu [0, 1].
+</pre></div>
+</div>
+<p>Zbiór danych to odręczne pismo cyfr od 0 do 9.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+
+<span class="c1"># Load the Digits dataset</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+
+<span class="c1"># Get the first image and its label</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="c1"># Plot the first image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># Hide axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5481b9fc25beef5ab0a4a629f546710db1ed2dd8524a3fcb0ff62b2bf3dd7051.png" src="_images/5481b9fc25beef5ab0a4a629f546710db1ed2dd8524a3fcb0ff62b2bf3dd7051.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+
+<span class="c1"># Przeprowadzenie cross-validation (CV) z 10-folds</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+                           <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9722222222222222
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-2-porownanie-algorytmow-klasyfikacyjnych">
+<h3>Zadanie 2. Porównanie algorytmów klasyfikacyjnych<a class="headerlink" href="#zadanie-2-porownanie-algorytmow-klasyfikacyjnych" title="Permalink to this heading">#</a></h3>
+<p>Użyj zbioru danych digits z biblioteki sklearn, który zawiera dane o chemicznym składzie winogron różnych klas win. Przeprowadź klasyfikację, porównując różne algorytmy: regresję logistyczną, drzewa decyzyjne, maszyny wektorów nośnych (SVM) i k-najbliższych sąsiadów (KNN).</p>
+<p>Podziel dane na zbiory, wykorzystaj CV oraz standaryzacje. Porównaj modele pod kątem dokładności (Accuracy) oraz macierzy pomyłek.</p>
+<p>Spróbuj dobrać hiperparametry dla każdej z metod w sposób optymalny.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.%20UM%204.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Uczenie Maszynowe - Wykład 4</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uczenie Maszynowe - ćwiczenia 6</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#klasyfikacja">Klasyfikacja</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-klasyfikacji-na-przykladzie-regresji-logistycznej">Problem klasyfikacji - na przykładzie regresji logistycznej</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcja-decyzyjna-w-regresji-logistycznej">Funkcja decyzyjna w regresji logistycznej</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importowanie-bibliotek">1. Importowanie bibliotek</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-klasyfikacyjny">2. Problem klasyfikacyjny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wstepny-preprocessing-danych">Wstępny preprocessing danych</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trenowanie-modelu">Trenowanie modelu</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proces-predykcji">Proces predykcji</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wizualizacja-modelu">Wizualizacja modelu</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zdolnosc-do-radzenia-sobie-modelow-z-niepewnoscia">Zdolność do radzenia sobie modelów z niepewnością</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcja-decyzyjna-algorytmu-klasyfikacyjnego">Funkcja decyzyjna algorytmu klasyfikacyjnego</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ewaluacja-modelu">Ewaluacja modelu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macierz-pomylek-confusion-matrix"><strong>1. Macierz pomyłek (Confusion Matrix)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-dokladnosc"><strong>2. Accuracy (dokładność)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadania">Zadania</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metody-preprocessingu-w-klasyfikacji-ml">Metody preprocessingu w klasyfikacji ML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-1-przeprowadz-calkowity-proces-uczenia-do-problemu-klasyfikacji-z-wykorzystaniem-podanego-kodu-rozwin-go-o-element-skalowania-danych-wykorzystaj-podane-metody-okresl-jak-wplynely-one-na-dokladnosc-modelu">Zadanie 1. Przeprowadź całkowity proces uczenia do problemu klasyfikacji z wykorzystaniem podanego kodu. Rozwiń go o element skalowania danych. Wykorzystaj podane metody. Określ jak wpłynęły one na dokładność modelu.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-2-porownanie-algorytmow-klasyfikacyjnych">Zadanie 2. Porównanie algorytmów klasyfikacyjnych</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kamil Smolak
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
