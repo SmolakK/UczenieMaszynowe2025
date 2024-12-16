@@ -204,6 +204,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%206%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 6</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%207%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 7</a></li>
+
 </ul>
 
     </div>
@@ -1199,7 +1203,7 @@ Ewaluację przeprowadzamy z wykorzystaniem miar - jak na wykładzie. Miary dost�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x22b9708faf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x153ab3f3d60&gt;
 </pre></div>
 </div>
 <img alt="_images/1208ebc940a1b42fb514f8503f6406f354fba6e6e23b03fd1156b71e78de5a1c.png" src="_images/1208ebc940a1b42fb514f8503f6406f354fba6e6e23b03fd1156b71e78de5a1c.png" />
@@ -1510,7 +1514,7 @@ Dokładność na obu zbiorach jest wysoka (średnia)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x22b9579a070&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x153ab751f40&gt;]
 </pre></div>
 </div>
 <img alt="_images/d56ce7e0d9c988babca799dc03fd35f1220ec932e37820691ba0975c719f336a.png" src="_images/d56ce7e0d9c988babca799dc03fd35f1220ec932e37820691ba0975c719f336a.png" />
@@ -1547,7 +1551,7 @@ Dokładność na obu zbiorach jest wysoka (średnia)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x22b95a221f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x153aba240d0&gt;
 </pre></div>
 </div>
 <img alt="_images/e0cdcf7b0f7d15636b302bf650430324380947505cb8a982d47a3a71068de721.png" src="_images/e0cdcf7b0f7d15636b302bf650430324380947505cb8a982d47a3a71068de721.png" />
@@ -1614,6 +1618,9 @@ Zbiór testowy: MSE: 1.18, R2: 0.10
 &lt;class &#39;sklearn.linear_model._ridge.Ridge&#39;&gt;
 Zbiór treningowy: MSE: 0.60, R2: 0.55
 Zbiór testowy: MSE: 1.85, R2: -0.41
+&lt;class &#39;sklearn.linear_model._coordinate_descent.Lasso&#39;&gt;
+Zbiór treningowy: MSE: 0.62, R2: 0.53
+Zbiór testowy: MSE: 2.07, R2: -0.58
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_ridge.py:204: LinAlgWarning: Ill-conditioned matrix (rcond=3.93738e-18): result may not be accurate.
@@ -1622,10 +1629,7 @@ C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_mode
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._coordinate_descent.Lasso&#39;&gt;
-Zbiór treningowy: MSE: 0.62, R2: 0.53
-Zbiór testowy: MSE: 2.07, R2: -0.58
-&lt;class &#39;sklearn.linear_model._coordinate_descent.ElasticNet&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._coordinate_descent.ElasticNet&#39;&gt;
 Zbiór treningowy: MSE: 0.62, R2: 0.53
 Zbiór testowy: MSE: 2.15, R2: -0.64
 </pre></div>
