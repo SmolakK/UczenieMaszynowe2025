@@ -17,16 +17,73 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-model = LogisticRegression()
-model.fit(X_train_scaled, y_train)
+import matplotlib.pyplot as plt
+
+# Siatka punktów do wyrysowania tła
+x_min, x_max = X_train[:, 0].min() - 1, X_train[:, 0].max() + 1
+y_min, y_max = X_train[:, 1].min() - 1, X_train[:, 1].max() + 1
+xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.02),
+                     np.arange(y_min, y_max, 0.02))
+
+# Predykcja dla siatki punktów
+Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = Z.reshape(xx.shape)
+
+plt.figure(figsize=(10, 6))
+plt.contourf(xx, yy, Z, alpha=0.3,cmap='Spectral')
+plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap=plt.cm.Spectral, edgecolors='k', marker='o')
+plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap=plt.cm.Spectral, edgecolors='k', marker='x')
+plt.title("Granice klas regresji logistycznej")
+plt.xlabel('Długość działki')
+plt.ylabel('Długość płatka')
+plt.colorbar()
+plt.show()
+
 ------------------
 
 [1;31m---------------------------------------------------------------------------[0m
-[1;31mNameError[0m                                 Traceback (most recent call last)
-Input [1;32mIn [9][0m, in [0;36m<cell line: 2>[1;34m()[0m
-[0;32m      1[0m model [38;5;241m=[39m LogisticRegression()
-[1;32m----> 2[0m model[38;5;241m.[39mfit([43mX_train_scaled[49m, y_train)
+[1;31mValueError[0m                                Traceback (most recent call last)
+Input [1;32mIn [12][0m, in [0;36m<cell line: 10>[1;34m()[0m
+[0;32m      6[0m xx, yy [38;5;241m=[39m np[38;5;241m.[39mmeshgrid(np[38;5;241m.[39marange(x_min, x_max, [38;5;241m0.02[39m),
+[0;32m      7[0m                      np[38;5;241m.[39marange(y_min, y_max, [38;5;241m0.02[39m))
+[0;32m      9[0m [38;5;66;03m# Predykcja dla siatki punktów[39;00m
+[1;32m---> 10[0m Z [38;5;241m=[39m [43mmodel[49m[38;5;241;43m.[39;49m[43mpredict[49m[43m([49m[43mnp[49m[38;5;241;43m.[39;49m[43mc_[49m[43m[[49m[43mxx[49m[38;5;241;43m.[39;49m[43mravel[49m[43m([49m[43m)[49m[43m,[49m[43m [49m[43myy[49m[38;5;241;43m.[39;49m[43mravel[49m[43m([49m[43m)[49m[43m][49m[43m)[49m
+[0;32m     11[0m Z [38;5;241m=[39m Z[38;5;241m.[39mreshape(xx[38;5;241m.[39mshape)
+[0;32m     13[0m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m10[39m, [38;5;241m6[39m))
 
-[1;31mNameError[0m: name 'X_train_scaled' is not defined
-NameError: name 'X_train_scaled' is not defined
+File [1;32m~\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_base.py:351[0m, in [0;36mLinearClassifierMixin.predict[1;34m(self, X)[0m
+[0;32m    337[0m [38;5;124;03m"""[39;00m
+[0;32m    338[0m [38;5;124;03mPredict class labels for samples in X.[39;00m
+[0;32m    339[0m 
+[1;32m   (...)[0m
+[0;32m    348[0m [38;5;124;03m    Vector containing the class labels for each sample.[39;00m
+[0;32m    349[0m [38;5;124;03m"""[39;00m
+[0;32m    350[0m xp, _ [38;5;241m=[39m get_namespace(X)
+[1;32m--> 351[0m scores [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdecision_function[49m[43m([49m[43mX[49m[43m)[49m
+[0;32m    352[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(scores[38;5;241m.[39mshape) [38;5;241m==[39m [38;5;241m1[39m:
+[0;32m    353[0m     indices [38;5;241m=[39m xp[38;5;241m.[39mastype(scores [38;5;241m>[39m [38;5;241m0[39m, [38;5;28mint[39m)
+
+File [1;32m~\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_base.py:332[0m, in [0;36mLinearClassifierMixin.decision_function[1;34m(self, X)[0m
+[0;32m    329[0m check_is_fitted([38;5;28mself[39m)
+[0;32m    330[0m xp, _ [38;5;241m=[39m get_namespace(X)
+[1;32m--> 332[0m X [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_data[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43maccept_sparse[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mcsr[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mreset[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[0;32m    333[0m scores [38;5;241m=[39m safe_sparse_dot(X, [38;5;28mself[39m[38;5;241m.[39mcoef_[38;5;241m.[39mT, dense_output[38;5;241m=[39m[38;5;28;01mTrue[39;00m) [38;5;241m+[39m [38;5;28mself[39m[38;5;241m.[39mintercept_
+[0;32m    334[0m [38;5;28;01mreturn[39;00m xp[38;5;241m.[39mreshape(scores, ([38;5;241m-[39m[38;5;241m1[39m,)) [38;5;28;01mif[39;00m scores[38;5;241m.[39mshape[[38;5;241m1[39m] [38;5;241m==[39m [38;5;241m1[39m [38;5;28;01melse[39;00m scores
+
+File [1;32m~\AppData\Roaming\Python\Python39\site-packages\sklearn\base.py:654[0m, in [0;36mBaseEstimator._validate_data[1;34m(self, X, y, reset, validate_separately, cast_to_ndarray, **check_params)[0m
+[0;32m    651[0m     out [38;5;241m=[39m X, y
+[0;32m    653[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m no_val_X [38;5;129;01mand[39;00m check_params[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mensure_2d[39m[38;5;124m"[39m, [38;5;28;01mTrue[39;00m):
+[1;32m--> 654[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_check_n_features[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43mreset[49m[38;5;241;43m=[39;49m[43mreset[49m[43m)[49m
+[0;32m    656[0m [38;5;28;01mreturn[39;00m out
+
+File [1;32m~\AppData\Roaming\Python\Python39\site-packages\sklearn\base.py:443[0m, in [0;36mBaseEstimator._check_n_features[1;34m(self, X, reset)[0m
+[0;32m    440[0m     [38;5;28;01mreturn[39;00m
+[0;32m    442[0m [38;5;28;01mif[39;00m n_features [38;5;241m!=[39m [38;5;28mself[39m[38;5;241m.[39mn_features_in_:
+[1;32m--> 443[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[0;32m    444[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mX has [39m[38;5;132;01m{[39;00mn_features[38;5;132;01m}[39;00m[38;5;124m features, but [39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39m[38;5;18m__class__[39m[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m}[39;00m[38;5;124m [39m[38;5;124m"[39m
+[0;32m    445[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mis expecting [39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mn_features_in_[38;5;132;01m}[39;00m[38;5;124m features as input.[39m[38;5;124m"[39m
+[0;32m    446[0m     )
+
+[1;31mValueError[0m: X has 2 features, but LogisticRegression is expecting 4 features as input.
+ValueError: X has 2 features, but LogisticRegression is expecting 4 features as input.
 
