@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['from sklearn.svm import SVR', 'from sklearn.model_selection import cross_validate', 'import matplotlib.pyplot as plt', '', 'ucz = []']
+['from sklearn.model_selection import cross_validate', 'import matplotlib.pyplot as plt', '', 'diabetes = datasets.load_diabetes()', "cechy = pd.DataFrame(diabetes['data'],columns=diabetes['feature_names'])"]
 ...
-['plt.figure(figsize = (12,5))', 'plt.plot(np.arange(len(ucz)),ucz, label = "TRAIN SCORE")', 'plt.plot(np.arange(len(ucz)),val, label = "VALIDATION SCORE")', 'plt.ylim(0,1)', 'plt.legend()']
+['plt.plot([x for x in range(1,10)],ucz, label = "TRAIN SCORE")', 'plt.plot([x for x in range(1,10)],val, label = "VALIDATION SCORE")', 'plt.ylabel("Współczynnik R2")', 'plt.xlabel("Współczynnik złożoności")', 'plt.legend()']
 -------------------
 
