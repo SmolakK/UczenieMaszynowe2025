@@ -210,6 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="1.%20UM%207%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 7</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%208%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%205.html">Uczenie Maszynowe - Wykład 5</a></li>
 </ul>
 
     </div>
@@ -1209,7 +1211,7 @@ Ewaluację przeprowadzamy z wykorzystaniem miar - jak na wykładzie. Miary dost�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x2f28e049f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x2b9b11df5b0&gt;
 </pre></div>
 </div>
 <img alt="_images/1208ebc940a1b42fb514f8503f6406f354fba6e6e23b03fd1156b71e78de5a1c.png" src="_images/1208ebc940a1b42fb514f8503f6406f354fba6e6e23b03fd1156b71e78de5a1c.png" />
@@ -1520,7 +1522,7 @@ Dokładność na obu zbiorach jest wysoka (średnia)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2f296234af0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2b9dfcd3b80&gt;]
 </pre></div>
 </div>
 <img alt="_images/d52aa0cc72b5602d61c2db08ae1edd64d5055bf9959cb77aac4f806adf3c0735.png" src="_images/d52aa0cc72b5602d61c2db08ae1edd64d5055bf9959cb77aac4f806adf3c0735.png" />
@@ -1555,6 +1557,12 @@ Dokładność na obu zbiorach jest wysoka (średnia)
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2b9dbe9a0a0&gt;
+</pre></div>
+</div>
+<img alt="_images/7e2bd32fd22d3b6c80d5cd9260e6ec0ebbc6bfafa1d5068d2eba31a0b40bb4b8.png" src="_images/7e2bd32fd22d3b6c80d5cd9260e6ec0ebbc6bfafa1d5068d2eba31a0b40bb4b8.png" />
 </div>
 </div>
 </section>
@@ -1613,28 +1621,32 @@ Lasso (L1): Dodaje wartość absolutną współczynników do funkcji kosztu. Las
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._base.LinearRegression&#39;&gt;
-Zbiór treningowy: MSE: 0.57, R2: 0.57
-Zbiór testowy: MSE: 0.60, R2: 0.54
+Zbiór treningowy: MSE: 0.60, R2: 0.55
+Zbiór testowy: MSE: 1.18, R2: 0.10
 &lt;class &#39;sklearn.linear_model._ridge.Ridge&#39;&gt;
-Zbiór treningowy: MSE: 0.58, R2: 0.57
-Zbiór testowy: MSE: 0.60, R2: 0.54
+Zbiór treningowy: MSE: 0.60, R2: 0.55
+Zbiór testowy: MSE: 1.85, R2: -0.41
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\student\anaconda3\Lib\site-packages\sklearn\linear_model\_ridge.py:204: LinAlgWarning: Ill-conditioned matrix (rcond=5.1658e-18): result may not be accurate.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_ridge.py:204: LinAlgWarning: Ill-conditioned matrix (rcond=3.93738e-18): result may not be accurate.
   return linalg.solve(A, Xy, assume_a=&quot;pos&quot;, overwrite_a=True).T
-C:\Users\student\anaconda3\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:678: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 4.911e+03, tolerance: 2.207e+00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_coordinate_descent.py:678: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.193e+03, tolerance: 2.207e+00
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._coordinate_descent.Lasso&#39;&gt;
-Zbiór treningowy: MSE: 0.59, R2: 0.56
-Zbiór testowy: MSE: 0.61, R2: 0.54
-&lt;class &#39;sklearn.linear_model._coordinate_descent.ElasticNet&#39;&gt;
-Zbiór treningowy: MSE: 0.59, R2: 0.56
-Zbiór testowy: MSE: 0.61, R2: 0.53
+Zbiór treningowy: MSE: 0.62, R2: 0.53
+Zbiór testowy: MSE: 2.07, R2: -0.58
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\student\anaconda3\Lib\site-packages\sklearn\linear_model\_coordinate_descent.py:678: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 4.911e+03, tolerance: 2.207e+00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;sklearn.linear_model._coordinate_descent.ElasticNet&#39;&gt;
+Zbiór treningowy: MSE: 0.62, R2: 0.53
+Zbiór testowy: MSE: 2.15, R2: -0.64
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\linear_model\_coordinate_descent.py:678: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 5.176e+03, tolerance: 2.207e+00
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
@@ -1647,7 +1659,7 @@ Zbiór testowy: MSE: 0.61, R2: 0.53
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6366514487955932, 0.6460838408583027)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6366514487955933, 0.6460838408582996)
 </pre></div>
 </div>
 </div>
@@ -1724,7 +1736,9 @@ Efektywność przy małych zbiorach danych: Pomaga maksymalnie wykorzystać dost
 valid mse: 0.64 valid r2: 0.53
 trening mse: 0.62 training r2: 0.54
 valid mse: 0.61 valid r2: 0.53
-trening mse: 0.61 training r2: 0.54
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>trening mse: 0.61 training r2: 0.54
 valid mse: 26.71 valid r2: -18.91
 trening mse: 0.62 training r2: 0.53
 valid mse: 0.63 valid r2: 0.54
@@ -1745,7 +1759,7 @@ valid mse: 0.64 valid r2: 0.52
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6515535108724574 0.5027861364723657
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6515535108681348 0.5027861364756643
 </pre></div>
 </div>
 </div>
@@ -1757,7 +1771,7 @@ valid mse: 0.64 valid r2: 0.52
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13209
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13210
 </pre></div>
 </div>
 </div>
@@ -1769,18 +1783,12 @@ valid mse: 0.64 valid r2: 0.52
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8267     3.821
-17445    1.726
-2271     0.965
-17848    2.648
-6252     1.573
-         ...  
-16850    3.081
-6265     1.635
-11284    2.292
-5390     2.221
-15795    3.250
-Name: Target, Length: 13209, dtype: float64
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [49],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">training</span><span class="p">]</span>
+
+<span class="ne">AttributeError</span>: &#39;numpy.ndarray&#39; object has no attribute &#39;iloc&#39;
 </pre></div>
 </div>
 </div>

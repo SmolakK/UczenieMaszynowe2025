@@ -1,0 +1,73 @@
+Traceback (most recent call last):
+  File "C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\ProgramData\Anaconda3\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_moons
+from sklearn.cluster import KMeans
+
+# 1. Generowanie zbioru danych
+X, klasy = make_moons(n_samples=300, noise=.12, random_state=42)
+
+# 2. Wizualizacja danych
+plt.scatter(X[:, 0], X[:, 1], s=30)
+plt.title("Wygenerowany zbiór danych")
+plt.xlabel("Cecha 1")
+plt.ylabel("Cecha 2")
+plt.show()
+
+# 3. Wizualizacja prawdziwego podziału
+plt.scatter(X[:, 0], X[:, 1], s=30, c=klasy, cmap='viridis')
+plt.title("Prawdziwy podział")
+plt.xlabel("Cecha 1")
+plt.ylabel("Cecha 2")
+plt.show()
+
+
+# 4. Klasteryzacja przy pomocy KMeans
+
+# 5. Wizualizacja wyników
+# Rysowanie danych
+plt.scatter(X[:, 0], X[:, 1], c=clusters, cmap="viridis", s=30)
+
+# Rysowanie centroidów
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], c="red", marker="x", s=100, label="Centroidy")
+
+plt.title("Wynik klasteryzacji KMeans z tłem")
+plt.xlabel("Cecha 1")
+plt.ylabel("Cecha 2")
+plt.legend()
+plt.show()
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Input [1;32mIn [7][0m, in [0;36m<cell line: 28>[1;34m()[0m
+[0;32m     21[0m plt[38;5;241m.[39mshow()
+[0;32m     24[0m [38;5;66;03m# 4. Klasteryzacja przy pomocy KMeans[39;00m
+[0;32m     25[0m 
+[0;32m     26[0m [38;5;66;03m# 5. Wizualizacja wyników[39;00m
+[0;32m     27[0m [38;5;66;03m# Rysowanie danych[39;00m
+[1;32m---> 28[0m plt[38;5;241m.[39mscatter(X[:, [38;5;241m0[39m], X[:, [38;5;241m1[39m], c[38;5;241m=[39m[43mclusters[49m, cmap[38;5;241m=[39m[38;5;124m"[39m[38;5;124mviridis[39m[38;5;124m"[39m, s[38;5;241m=[39m[38;5;241m30[39m)
+[0;32m     30[0m [38;5;66;03m# Rysowanie centroidów[39;00m
+[0;32m     31[0m plt[38;5;241m.[39mscatter(kmeans[38;5;241m.[39mcluster_centers_[:, [38;5;241m0[39m], kmeans[38;5;241m.[39mcluster_centers_[:, [38;5;241m1[39m], c[38;5;241m=[39m[38;5;124m"[39m[38;5;124mred[39m[38;5;124m"[39m, marker[38;5;241m=[39m[38;5;124m"[39m[38;5;124mx[39m[38;5;124m"[39m, s[38;5;241m=[39m[38;5;241m100[39m, label[38;5;241m=[39m[38;5;124m"[39m[38;5;124mCentroidy[39m[38;5;124m"[39m)
+
+[1;31mNameError[0m: name 'clusters' is not defined
+NameError: name 'clusters' is not defined
+
