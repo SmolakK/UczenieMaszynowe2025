@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1. UM 7 - ćwiczenia';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uczenie Maszynowe - ćwiczenia 8" href="1.%20UM%208%20-%20%C4%87wiczenia.html" />
     <link rel="prev" title="Uczenie Maszynowe - ćwiczenia 6" href="1.%20UM%206%20-%20%C4%87wiczenia.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -209,6 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Uczenie Maszynowe - ćwiczenia 7</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%208%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%205.html">Uczenie Maszynowe - Wykład 5</a></li>
 </ul>
 
     </div>
@@ -442,6 +445,266 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;titanic.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;titanic_target.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dane</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dane</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pclass</th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>ticket</th>
+      <th>fare</th>
+      <th>cabin</th>
+      <th>embarked</th>
+      <th>boat</th>
+      <th>body</th>
+      <th>home.dest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Allen, Miss. Elisabeth Walton</td>
+      <td>female</td>
+      <td>29.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>24160</td>
+      <td>211.3375</td>
+      <td>B5</td>
+      <td>S</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>St Louis, MO</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Allison, Master. Hudson Trevor</td>
+      <td>male</td>
+      <td>0.9167</td>
+      <td>1</td>
+      <td>2</td>
+      <td>113781</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>Montreal, PQ / Chesterville, ON</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Allison, Miss. Helen Loraine</td>
+      <td>female</td>
+      <td>2.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>113781</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Montreal, PQ / Chesterville, ON</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Allison, Mr. Hudson Joshua Creighton</td>
+      <td>male</td>
+      <td>30.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>113781</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+      <td>NaN</td>
+      <td>135.0</td>
+      <td>Montreal, PQ / Chesterville, ON</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
+      <td>female</td>
+      <td>25.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>113781</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Montreal, PQ / Chesterville, ON</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>Zabour, Miss. Hileni</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2665</td>
+      <td>14.4542</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>328.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>Zabour, Miss. Thamine</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2665</td>
+      <td>14.4542</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Mapriededer</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2656</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>304.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Ortin</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2670</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>Zimmerman, Mr. Leo</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>315082</td>
+      <td>7.8750</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1309 rows × 13 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dane</span><span class="o">.</span><span class="n">cabin</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d+[.\d]*)&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Local\Temp\ipykernel_11644\2020417258.py:1: FutureWarning: The default value of regex will change from True to False in a future version.
+  dane.cabin.str.replace(r&#39;(\d+[.\d]*)&#39;,&#39;&#39;).unique()
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;B&#39;, &#39;C C&#39;, &#39;E&#39;, &#39;D&#39;, &#39;A&#39;, &#39;C&#39;, nan, &#39;B B&#39;, &#39;T&#39;, &#39;B B B&#39;, &#39;C C C&#39;,
+       &#39;D D&#39;, &#39;B B B B&#39;, &#39;E E&#39;, &#39;F&#39;, &#39;F G&#39;, &#39;F E&#39;, &#39;G&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
 <section id="dokonaj-imputacji-brakujacych-danych">
 <h2>1. Dokonaj imputacji brakujących danych<a class="headerlink" href="#dokonaj-imputacji-brakujacych-danych" title="Permalink to this heading">#</a></h2>
 <p>Istnieje kilka metod, zaleznie od typu zmiennej.
@@ -535,6 +798,15 @@ Użyj informacji o rodzinie (SibSp, Parch) do stworzenia cechy FamilySize i ozna
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 6</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="1.%20UM%208%20-%20%C4%87wiczenia.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 8</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

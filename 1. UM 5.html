@@ -1,0 +1,1245 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Uczenie Maszynowe - Wykład 5 &#8212; Uczenie Maszynowe 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"47fdca69a31c4892bca78af88f3caa4d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "53c4d653e8314a0eaa34e969e9495fa3": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_d56e7c3a6d7541a68fa68949859f4526", "IPY_MODEL_aea3ff7d17cd422e88cb35d02df6a884", "IPY_MODEL_6eecbccb99504a1d894a9339ff56fb0b"], "layout": "IPY_MODEL_47fdca69a31c4892bca78af88f3caa4d"}}, "ea41e76858a84aefaca760d19888f904": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1e19e5b4dfa548b58b5ee936e5476c82": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "d56e7c3a6d7541a68fa68949859f4526": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "std_dev", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_ea41e76858a84aefaca760d19888f904", "max": 4.0, "min": 0.1, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.4, "style": "IPY_MODEL_1e19e5b4dfa548b58b5ee936e5476c82", "value": 0.6}}, "27461412c1884568906301f6470b2b31": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6553059138f944d5b14a4823912bb728": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "aea3ff7d17cd422e88cb35d02df6a884": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "n_clusters", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_27461412c1884568906301f6470b2b31", "max": 10, "min": 2, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_6553059138f944d5b14a4823912bb728", "value": 4}}, "042487d78a4f454b97f0af567988f1fb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6eecbccb99504a1d894a9339ff56fb0b": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_042487d78a4f454b97f0af567988f1fb", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "Clustering Metrics:\n  Silhouette Score: 0.88\n  Davies-Bouldin Index: 0.17\n  Calinski-Harabasz Index: 9411.51\n"}, {"output_type": "stream", "name": "stderr", "text": "C:\\Users\\kamil\\AppData\\Roaming\\Python\\Python39\\site-packages\\sklearn\\cluster\\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2.\n  warnings.warn(\n"}, {"output_type": "display_data", "metadata": {"needs_background": "light"}, "data": {"text/plain": "<Figure size 576x432 with 1 Axes>", "image/png": "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\n"}}]}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1. UM 5';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Uczenie Maszynowe - ćwiczenia 8" href="1.%20UM%208%20-%20%C4%87wiczenia.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="1.%20UM%201.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1.%20UM%201.html">
+                    Uczenie Maszynowe - Wykład 1
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%201%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 1</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%202%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%202.html">Uczenie Maszynowe - Wykład 2</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 4</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203.html">Uczenie Maszynowe - Wykład 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%203%20-%20%C4%87wiczenia%20r.html">Uczenie Maszynowe - ćwiczenia 3 (plik roboczy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204%20-%20%C4%87wiczenia%20r.html">Uczenie Maszynowe - ćwiczenia 4 (plik roboczy)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204.5%20-%20zadania%20dodatkowe.html">Uczenie Maszynowe - ćwiczenia 4.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%205%20-%20%C4%87wiczenia%20%28%2Btroch%C4%99%20wyk%C5%82ad%29.html">Uczenie Maszynowe - ćwiczenia 5</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%204.html">Uczenie Maszynowe - Wykład 4</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%206%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 6</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%207%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 7</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1.%20UM%208%20-%20%C4%87wiczenia.html">Uczenie Maszynowe - ćwiczenia 8</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uczenie Maszynowe - Wykład 5</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1. UM 5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1. UM 5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Uczenie Maszynowe - Wykład 5</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">K-Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasteryzacja-hierarchiczna">2. Klasteryzacja hierarchiczna</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-density-based-spatial-clustering-of-applications-with-noise">3. DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ocena-klasteryzacji-dostepny-prawidlowy-podzial">Ocena klasteryzacji - dostępny prawidłowy podział</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skorygowany-wskaznik-randa-ari">Skorygowany Wskaźnik Randa (ARI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#znormalizowana-wzajemna-informacja-nmi">Znormalizowana Wzajemna Informacja (NMI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jednorodnosc-kompletnosc-i-miara-v">Jednorodność, Kompletnosć i Miara V</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#podsumowanie">Podsumowanie</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ocena-klasteryzacji-prawidlowy-podzial-niedostepny">Ocena klasteryzacji - prawidłowy podział niedostępny</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wskaznik-sylwetki-silhouette-score">Wskaźnik Sylwetki (Silhouette Score)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indeks-daviesa-bouldina">Indeks Daviesa-Bouldina</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indeks-calinskiego-harabasza">Indeks Calinskiego-Harabasza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Podsumowanie</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redukcja-wymiarowosci">Redukcja wymiarowości</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-analiza-glownych-skladowych">PCA - Analiza Głównych Składowych</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoai-geospatial-artificial-intelligence">GeoAI - Geospatial Artificial Intelligence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kluczowe-elementy-geoai">Kluczowe elementy GeoAI:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kluczowe-technologie-wspierajace-geoai">Kluczowe technologie wspierające GeoAI:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wizja-komputerowa-cv">Wizja komputerowa (CV)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#przetwarzanie-jezyka-naturalnego-nlp">Przetwarzanie języka naturalnego (NLP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teledetekcja">Teledetekcja</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#big-data-i-przetwarzanie-w-chmurze">Big Data i przetwarzanie w chmurze</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internet-rzeczy-iot">Internet rzeczy (IoT)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modele-podstawowe-foundationan-models">Modele podstawowe (Foundationan models)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklady-geoai">Przykłady GeoAI:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklad-1-monitorowanie-zmian-klimatycznych">Przykład 1: Monitorowanie zmian klimatycznych</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklad-2-optymalizacja-ruchu-drogowego-w-miastach">Przykład 2: Optymalizacja ruchu drogowego w miastach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklad-3-zarzadzanie-kryzysowe-po-katastrofach-naturalnych">Przykład 3: Zarządzanie kryzysowe po katastrofach naturalnych</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uczenie-maszynowe-wyklad-5">
+<h1>Uczenie Maszynowe - Wykład 5<a class="headerlink" href="#uczenie-maszynowe-wyklad-5" title="Permalink to this heading">#</a></h1>
+<p>Klasteryzacja to technika uczenia maszynowego bez nadzoru, która służy do grupowania podobnych obiektów w zbiory na podstawie ich cech. W przeciwieństwie do uczenia nadzorowanego, klasteryzacja nie korzysta z oznaczonych danych (brak etykiet klas) – model samodzielnie szuka struktur i wzorców w danych.</p>
+<p>Główne cechy klasteryzacji:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Uczenie bez nadzoru: Brak etykiet klas dla danych wejściowych.
+Cel: Odkrycie ukrytych struktur w danych.
+Zastosowanie: Identyfikacja grup (klastrów) w zbiorze danych.
+</pre></div>
+</div>
+<p>Typowe algorytmy klasteryzacji:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>KMeans: Algorytm iteracyjny, który minimalizuje odległości punktów od centrów klastrów.
+DBSCAN: Algorytm gęstościowy, który identyfikuje klastry jako grupy gęsto upakowanych punktów.
+Hierarchiczna klasteryzacja: Tworzenie hierarchicznej struktury klastrów w postaci drzewa.
+</pre></div>
+</div>
+<section id="k-means">
+<h2>K-Means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
+<p>To często używany i względnie prosty algorytm klasteryzacyjny.
+W nim, każdy klaster jest reprezentowany przez swój centroid. Algorytm działa w sposób iteracyjny:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Inicjalizuj losowo K centroidów.
+Przypisz każdy punkt do najbliższego centroidu.
+Zaktualizuj centroidy, obliczając średnią punktów w każdym klastrze.
+Powtarzaj, aż centroidy ustabilizują się.
+</pre></div>
+</div>
+<p>Algorytm jest prosty, szybki, ale wymaga określenia liczby klas K z góry.</p>
+<img src='img/kmean.gif' img/><section id="klasteryzacja-hierarchiczna">
+<h3>2. Klasteryzacja hierarchiczna<a class="headerlink" href="#klasteryzacja-hierarchiczna" title="Permalink to this heading">#</a></h3>
+<p>Metoda ta buduje dendrogram - drzewo przedstawiające podobieństwo obiektów.
+Wyróżniamy dwa typy:</p>
+<ul class="simple">
+<li><p><strong>Aglomeracyjne</strong>: Począc od każdego obiektu będącego w jednej, osobnej klasie - łączy je.</p></li>
+<li><p><strong>Deglomarycyjne</strong>: Zaczyba od wielkiego klastra, który jest stopniowo dzielony.</p></li>
+</ul>
+<p>Zalety:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Nie ma potrzeby określania liczby klastrów
+Zapewnia hierarchię klastrów
+</pre></div>
+</div>
+<p>Wady:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Obliczeniowo obciążający
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">dendrogram</span><span class="p">,</span> <span class="n">linkage</span><span class="p">,</span> <span class="n">fcluster</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="c1"># Generate synthetic data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Perform hierarchical clustering</span>
+<span class="n">linkage_matrix</span> <span class="o">=</span> <span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">)</span>  <span class="c1"># Ward&#39;s method minimizes variance within clusters</span>
+
+<span class="c1"># Plot dendrogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage_matrix</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hierarchical Clustering Dendrogram&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sample Index&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Distance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Set a threshold to create flat clusters</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">linkage_matrix</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot clusters</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">clusters</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Clusters Identified by Hierarchical Clustering&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Local\Temp\ipykernel_18324\2903084872.py:3: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 1.21.5)
+  from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
+</pre></div>
+</div>
+<img alt="_images/39682b0fb33a5a20e3dbed70b59868086956529a875ba15fc4fcd9e91a89ad5b.png" src="_images/39682b0fb33a5a20e3dbed70b59868086956529a875ba15fc4fcd9e91a89ad5b.png" />
+<img alt="_images/266aaf93ad7fc84435fef48c68684c3016123253515654c35c2b394660c4648b.png" src="_images/266aaf93ad7fc84435fef48c68684c3016123253515654c35c2b394660c4648b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise">
+<h2>3. DBSCAN (Density-Based Spatial Clustering of Applications with Noise)<a class="headerlink" href="#dbscan-density-based-spatial-clustering-of-applications-with-noise" title="Permalink to this heading">#</a></h2>
+<p>Grupuje punkty, które są zbliżone do siebie na podstawie progu. Odfiltrowuje punkty, które uważane są za “szum”.</p>
+<p>Kluczowe parametry:
+eps: Maksymalny dystans między punktami, który dopuszczony jest w klastrze.
+min_samples: Minimalna liczba puntków w klastrze.</p>
+<p>Pros:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Nie wymaga określenia liczby klastrów
+Odkrywa klastry o nieregularnych kształtach
+Odporny na wartości odstająće
+</pre></div>
+</div>
+<p>Cons:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Czuły na swoje hiperparametry
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
+
+<span class="c1"># Generate synthetic data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Apply DBSCAN</span>
+<span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">unique_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tab10</span><span class="p">(</span><span class="n">each</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">))]</span>
+
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># Black used for noise</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">cluster_points</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">label</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cluster_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">color</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cluster </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;Noise&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;DBSCAN Clustering&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7cb1a77ef0439ecbe11ad44d7012143e6da11607d209badd73e171a1c2db15c5.png" src="_images/7cb1a77ef0439ecbe11ad44d7012143e6da11607d209badd73e171a1c2db15c5.png" />
+</div>
+</div>
+</section>
+<section id="ocena-klasteryzacji-dostepny-prawidlowy-podzial">
+<h2>Ocena klasteryzacji - dostępny prawidłowy podział<a class="headerlink" href="#ocena-klasteryzacji-dostepny-prawidlowy-podzial" title="Permalink to this heading">#</a></h2>
+<p>Podczas oceny wydajności klasteryzacji niektóre miary wymagają prawidłowego podziału (ground truth). Te miary mierzą, jak dobrze przewidywane klastry pokrywają się z rzeczywistymi etykietami klas. Poniżej znajdują się najważniejsze miary wraz z przykładami kodu.</p>
+<section id="skorygowany-wskaznik-randa-ari">
+<h3>Skorygowany Wskaźnik Randa (ARI)<a class="headerlink" href="#skorygowany-wskaznik-randa-ari" title="Permalink to this heading">#</a></h3>
+<p>Skorygowany Wskaźnik Randa mierzy podobieństwo między dwiema klasteryzacjami danych, analizując wszystkie pary punktów i licząc te, które są poprawnie sklasyfikowane. Wskaźnik jest skorygowany o przypadkowe dopasowanie i przyjmuje wartości od -1 (brak zgodności) do 1 (idealna zgodność).</p>
+<p>Przykład kodu:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span>
+
+<span class="c1"># Wzorcowe etykiety</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Przewidywane etykiety klastrów</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Obliczanie ARI</span>
+<span class="n">ari</span> <span class="o">=</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skorygowany Wskaźnik Randa (ARI): </span><span class="si">{</span><span class="n">ari</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="znormalizowana-wzajemna-informacja-nmi">
+<h3>Znormalizowana Wzajemna Informacja (NMI)<a class="headerlink" href="#znormalizowana-wzajemna-informacja-nmi" title="Permalink to this heading">#</a></h3>
+<p>Znormalizowana Wzajemna Informacja ocenia ilość informacji wspólnej między rzeczywistymi etykietami a przewidywanymi klastrami. Wynik jest znormalizowany i mieści się w zakresie od 0 (brak wspólnej informacji) do 1 (idealna korelacja).</p>
+<p>Przykład kodu:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">normalized_mutual_info_score</span>
+
+<span class="c1"># Wzorcowe etykiety</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Przewidywane etykiety klastrów</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Obliczanie NMI</span>
+<span class="n">nmi</span> <span class="o">=</span> <span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Znormalizowana Wzajemna Informacja (NMI): </span><span class="si">{</span><span class="n">nmi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="jednorodnosc-kompletnosc-i-miara-v">
+<h3>Jednorodność, Kompletnosć i Miara V<a class="headerlink" href="#jednorodnosc-kompletnosc-i-miara-v" title="Permalink to this heading">#</a></h3>
+<p>Jednorodność: Wszystkie klastry zawierają wyłącznie punkty należące do jednej klasy.
+Kompletność: Wszystkie punkty z danej klasy są w tym samym klastrze.
+Miara V: Średnia harmoniczna jednorodności i kompletności.
+Przykład kodu:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">homogeneity_score</span><span class="p">,</span> <span class="n">completeness_score</span><span class="p">,</span> <span class="n">v_measure_score</span>
+
+<span class="c1"># Wzorcowe etykiety</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Przewidywane etykiety klastrów</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Obliczanie jednorodności, kompletności i miary V</span>
+<span class="n">jednorodnosc</span> <span class="o">=</span> <span class="n">homogeneity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">kompletnosc</span> <span class="o">=</span> <span class="n">completeness_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">miara_v</span> <span class="o">=</span> <span class="n">v_measure_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jednorodność: </span><span class="si">{</span><span class="n">jednorodnosc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kompletność: </span><span class="si">{</span><span class="n">kompletnosc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Miara V: </span><span class="si">{</span><span class="n">miara_v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="podsumowanie">
+<h3>Podsumowanie<a class="headerlink" href="#podsumowanie" title="Permalink to this heading">#</a></h3>
+<p>Powyższe metryki dostarczają cennych informacji na temat jakości klasteryzacji, jeśli dostępne są wzorcowe etykiety. Skorygowany Wskaźnik Randa (ARI) i Znormalizowana Wzajemna Informacja (NMI) są szeroko stosowane do ogólnej oceny, podczas gdy Jednorodność, Kompletność i Miara V pozwalają na bardziej szczegółową analizę jakości klastrów. Wybieraj metrykę, która najlepiej pasuje do celów klasteryzacji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span><span class="p">,</span> <span class="n">normalized_mutual_info_score</span><span class="p">,</span> <span class="n">homogeneity_score</span><span class="p">,</span> <span class="n">completeness_score</span><span class="p">,</span> <span class="n">v_measure_score</span>
+
+<span class="c1"># Generowanie zbioru danych</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Funkcja do wizualizacji wyników dla różnych liczby klastrów</span>
+<span class="k">def</span> <span class="nf">visualize_clustering_for_different_k</span><span class="p">():</span>
+    <span class="n">cluster_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>  <span class="c1"># Różne liczby klastrów</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cluster_counts</span><span class="p">):</span>
+        <span class="c1"># Klasteryzacja KMeans</span>
+        <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="c1"># Obliczanie miar jakości klasteryzacji</span>
+        <span class="n">ari</span> <span class="o">=</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">nmi</span> <span class="o">=</span> <span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">homogeneity</span> <span class="o">=</span> <span class="n">homogeneity_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">completeness</span> <span class="o">=</span> <span class="n">completeness_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">v_measure</span> <span class="o">=</span> <span class="n">v_measure_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="c1"># Wizualizacja</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centroidy&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KMeans: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> klastry</span><span class="se">\n</span><span class="s2">ARI: </span><span class="si">{</span><span class="n">ari</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, NMI: </span><span class="si">{</span><span class="n">nmi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Homogeneity: </span><span class="si">{</span><span class="n">homogeneity</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Completeness: </span><span class="si">{</span><span class="n">completeness</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, V-Measure: </span><span class="si">{</span><span class="n">v_measure</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Wywołanie funkcji</span>
+<span class="n">visualize_clustering_for_different_k</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2.
+  warnings.warn(
+C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2.
+  warnings.warn(
+C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2.
+  warnings.warn(
+C:\Users\kamil\AppData\Roaming\Python\Python39\site-packages\sklearn\cluster\_kmeans.py:1446: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2.
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="_images/e4be4ed80afac76cb199d53ee65d7626e47ddcb7e4eb8dbc2eeb7833b5be99c6.png" src="_images/e4be4ed80afac76cb199d53ee65d7626e47ddcb7e4eb8dbc2eeb7833b5be99c6.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ocena-klasteryzacji-prawidlowy-podzial-niedostepny">
+<h2>Ocena klasteryzacji - prawidłowy podział niedostępny<a class="headerlink" href="#ocena-klasteryzacji-prawidlowy-podzial-niedostepny" title="Permalink to this heading">#</a></h2>
+<p>Gdy brak jest wzorcowych etykiet (ground truth), wydajność klasteryzacji można oceniać za pomocą metryk wewnętrznych. Te metryki mierzą jakość klasteryzacji na podstawie właściwości takich jak spójność (kompaktowość klastrów) i separacja (odległość między klastrami). Poniżej przedstawiono najważniejsze metryki wraz z przykładami kodu</p>
+<section id="wskaznik-sylwetki-silhouette-score">
+<h3>Wskaźnik Sylwetki (Silhouette Score)<a class="headerlink" href="#wskaznik-sylwetki-silhouette-score" title="Permalink to this heading">#</a></h3>
+<p>Wskaźnik Sylwetki mierzy, jak bardzo dany punkt jest podobny do punktów z własnego klastra w porównaniu do punktów z innych klastrów. Wynik mieści się w zakresie od -1 (zła klasteryzacja) do 1 (idealna klasteryzacja).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="c1"># Generowanie danych syntetycznych</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Klasteryzacja za pomocą K-Means</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+
+<span class="c1"># Obliczanie Wskaźnika Sylwetki</span>
+<span class="n">sil_score</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wskaźnik Sylwetki: </span><span class="si">{</span><span class="n">sil_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="indeks-daviesa-bouldina">
+<h3>Indeks Daviesa-Bouldina<a class="headerlink" href="#indeks-daviesa-bouldina" title="Permalink to this heading">#</a></h3>
+<p>Indeks Daviesa-Bouldina mierzy średni stosunek podobieństwa każdego klastra do najbardziej podobnego innego klastra. Niższe wartości wskazują na lepszą klasteryzację.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">davies_bouldin_score</span>
+
+<span class="c1"># Obliczanie Indeksu Daviesa-Bouldina</span>
+<span class="n">db_score</span> <span class="o">=</span> <span class="n">davies_bouldin_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indeks Daviesa-Bouldina: </span><span class="si">{</span><span class="n">db_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="indeks-calinskiego-harabasza">
+<h3>Indeks Calinskiego-Harabasza<a class="headerlink" href="#indeks-calinskiego-harabasza" title="Permalink to this heading">#</a></h3>
+<p>Indeks Calinskiego-Harabasza, znany również jako Kryterium Współczynnika Zmienności, ocenia wydajność klasteryzacji na podstawie stosunku rozproszenia między klastrami do rozproszenia wewnątrz klastrów. Wyższe wartości oznaczają lepszą klasteryzację.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">calinski_harabasz_score</span>
+
+<span class="c1"># Obliczanie Indeksu Calinskiego-Harabasza</span>
+<span class="n">ch_score</span> <span class="o">=</span> <span class="n">calinski_harabasz_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indeks Calinskiego-Harabasza: </span><span class="si">{</span><span class="n">ch_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Podsumowanie<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Powyższe metryki wewnętrzne dostarczają cennych informacji na temat jakości klasteryzacji, gdy brak wzorcowych etykiet. Wskaźnik Sylwetki i Indeks Daviesa-Bouldina koncentrują się na kompaktowości i separacji klastrów, natomiast Indeks Calinskiego-Harabasza ocenia balans wariancji klastrów. Wybierz metrykę, która najlepiej pasuje do Twoich celów klasteryzacji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span><span class="p">,</span> <span class="n">davies_bouldin_score</span><span class="p">,</span> <span class="n">calinski_harabasz_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+
+<span class="c1"># Define a function for clustering and visualization</span>
+<span class="k">def</span> <span class="nf">clustering_example</span><span class="p">(</span><span class="n">std_dev</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="c1"># Generate synthetic data</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="n">std_dev</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="c1"># Perform clustering</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+
+    <span class="c1"># Compute clustering metrics</span>
+    <span class="n">sil_score</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">db_score</span> <span class="o">=</span> <span class="n">davies_bouldin_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">ch_score</span> <span class="o">=</span> <span class="n">calinski_harabasz_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># Display metrics</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clustering Metrics:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Silhouette Score: </span><span class="si">{</span><span class="n">sil_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Davies-Bouldin Index: </span><span class="si">{</span><span class="n">db_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Calinski-Harabasz Index: </span><span class="si">{</span><span class="n">ch_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Visualize clustering</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centroids&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;K-Means Clustering&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Create interactive widget</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">clustering_example</span><span class="p">,</span> <span class="n">std_dev</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span> <span class="n">n_clusters</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "53c4d653e8314a0eaa34e969e9495fa3"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.clustering_example(std_dev=0.6, n_clusters=4)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="redukcja-wymiarowosci">
+<h2>Redukcja wymiarowości<a class="headerlink" href="#redukcja-wymiarowosci" title="Permalink to this heading">#</a></h2>
+<p>Redukcja wymiarowości to inny typ uczenie nienadzorowanego, którego zadaniem jest ekstrakcja najważniejszych cech z danych przy redukcji (kompresji) tych danych. Jej celem jest:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Zmniejszenie wymiarowości danych
+Wizualizacja danych (redukcja do 2 lub 3 wymiarów)
+</pre></div>
+</div>
+<section id="pca-analiza-glownych-skladowych">
+<h3>PCA - Analiza Głównych Składowych<a class="headerlink" href="#pca-analiza-glownych-skladowych" title="Permalink to this heading">#</a></h3>
+<p>PCA (Principal Component Analysis) to technika redukcji wymiarowości, która przekształca dane do nowej przestrzeni z mniejszą liczbą wymiarów, zachowując jak najwięcej informacji (wariancji danych).</p>
+<p>Jak działa PCA:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Standaryzacja danych: Przekształcenie danych do tej samej skali.
+
+2. Obliczenie macierzy kowariancji: Wykrywanie relacji między zmiennymi.
+
+3. Wyznaczenie wartości własnych i wektorów własnych: Identyfikacja kierunków największej wariancji.
+
+4. Projekcja na nowe osie: Przekształcenie danych do przestrzeni głównych składowych.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="c1"># 1. Generowanie danych syntetycznych</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 2. Wizualizacja danych w oryginalnej przestrzeni (2D)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dane w oryginalnej przestrzeni&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cecha 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cecha 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 3. Zastosowanie PCA (redukcja wymiarowości do 1D)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># 4. Wizualizacja danych po redukcji wymiarowości</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_pca</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dane po PCA (redukcja do 1D)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Główna składowa&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 5. Odzyskanie oryginalnych współrzędnych (rekonstrukcja)</span>
+<span class="n">X_reconstructed</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X_pca</span><span class="p">)</span>
+
+<span class="c1"># 6. Wizualizacja rekonstrukcji</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Oryginalne dane&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_reconstructed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_reconstructed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Zrekonstruowane dane&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Porównanie danych oryginalnych i zrekonstruowanych&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cecha 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cecha 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Local\Temp\ipykernel_18324\208706707.py:10: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  plt.scatter(X[:, 0], X[:, 1], s=30, cmap=&#39;viridis&#39;)
+</pre></div>
+</div>
+<img alt="_images/fc0a275db80eb8c97a3d7bfa8cc3436891a7a2daec7be924521c8c08ddeffad6.png" src="_images/fc0a275db80eb8c97a3d7bfa8cc3436891a7a2daec7be924521c8c08ddeffad6.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Local\Temp\ipykernel_18324\208706707.py:21: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  plt.scatter(X_pca, np.zeros_like(X_pca), s=30, cmap=&#39;viridis&#39;)
+</pre></div>
+</div>
+<img alt="_images/1583d170ecb8e76886c6d104af35cd9b2b470c359085f48af78ea9ab3725ea24.png" src="_images/1583d170ecb8e76886c6d104af35cd9b2b470c359085f48af78ea9ab3725ea24.png" />
+<img alt="_images/c43132e356ddecaa8d46c5afa833da672968692cf81f7764d67922f74247a316.png" src="_images/c43132e356ddecaa8d46c5afa833da672968692cf81f7764d67922f74247a316.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="c1"># 1. Generowanie danych 3D</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 2. Wizualizacja danych w 3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Dane w przestrzeni 3D&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Cecha 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cecha 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Cecha 3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 3. Redukcja wymiarowości z 3D do 2D za pomocą PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># 4. Wizualizacja danych po redukcji do 2D</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dane po PCA (redukcja z 3D do 2D)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Główna składowa 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Główna składowa 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Klasa&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 5. Wyświetlenie wyjaśnionej wariancji</span>
+<span class="n">explained_variance</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wartości wyjaśnionej wariancji dla każdej składowej: </span><span class="si">{</span><span class="n">explained_variance</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Łączna wyjaśniona wariancja: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">explained_variance</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\kamil\AppData\Local\Temp\ipykernel_18324\3453205172.py:11: MatplotlibDeprecationWarning: The clean function was deprecated in Matplotlib 3.8 and will be removed two minor releases later. Use none, you no longer need to clean a Grouper instead.
+  scatter = ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=y, cmap=&#39;viridis&#39;, s=50)
+</pre></div>
+</div>
+<img alt="_images/482d46349971a5b7c09e77776e501439a2d732123c29646877eca2eac38859be.png" src="_images/482d46349971a5b7c09e77776e501439a2d732123c29646877eca2eac38859be.png" />
+<img alt="_images/8169e92dd4817303615c74f69d9476a617b8db852a28307734d26b950951105f.png" src="_images/8169e92dd4817303615c74f69d9476a617b8db852a28307734d26b950951105f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wartości wyjaśnionej wariancji dla każdej składowej: [0.66274476 0.28634436]
+Łączna wyjaśniona wariancja: 0.95
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="geoai-geospatial-artificial-intelligence">
+<h2>GeoAI - Geospatial Artificial Intelligence<a class="headerlink" href="#geoai-geospatial-artificial-intelligence" title="Permalink to this heading">#</a></h2>
+<p>GeoAI (Geospatial Artificial Intelligence) to dziedzina, która łączy uczenia maszynowe z analizą danych geoprzestrzennych. Celem GeoAI jest automatyzacja, modelowanie i analiza procesów przestrzennych oraz wspomaganie decyzji w obszarach związanych z lokalizacją i przestrzenią geograficzną.</p>
+<p>Jest to względnie nowy trend - rynek dla usług GeoAI stale rośnie.</p>
+<section id="kluczowe-elementy-geoai">
+<h3>Kluczowe elementy GeoAI:<a class="headerlink" href="#kluczowe-elementy-geoai" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Dane przestrzenne</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Często również oznacza to korzystanie z dużych zbiorów danych przestrzennych, takich jak OpenStreetMap, Copernicus, Google Earth Engine
+</pre></div>
+</div>
+</li>
+<li><p>Modele</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Istnieją modele &quot;wzbogacone&quot; o komponent przestrzenny, czyli zdolne do uwzględnienia komponentów przestrzennego i komponentu czasowego.
+</pre></div>
+</div>
+</li>
+<li><p>Integracja modeli z danymi przestrzennymi</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Analiza przestrzenna (Spatial Analysis): badanie wzorców, odległości i relacji między obiektami w przestrzeni.
+ Systemy Informacji Geograficznej (GIS): wizualizacja i zarządzanie danymi geoprzestrzennymi.
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Nie jest to zatem wyłącznie prostym stosowaniem modeli na danych przestrzennych.</p>
+</section>
+<section id="kluczowe-technologie-wspierajace-geoai">
+<h3>Kluczowe technologie wspierające GeoAI:<a class="headerlink" href="#kluczowe-technologie-wspierajace-geoai" title="Permalink to this heading">#</a></h3>
+<section id="wizja-komputerowa-cv">
+<h4>Wizja komputerowa (CV)<a class="headerlink" href="#wizja-komputerowa-cv" title="Permalink to this heading">#</a></h4>
+<p>Analizuje wizualne dane geoprzestrzenne (obrazy satelitarne, lotnicze), identyfikując pokrycie terenu, infrastrukturę i zmiany w czasie. Wykorzystywana do mapowania, planowania miejskiego i reagowania na katastrofy.</p>
+</section>
+<section id="przetwarzanie-jezyka-naturalnego-nlp">
+<h4>Przetwarzanie języka naturalnego (NLP)<a class="headerlink" href="#przetwarzanie-jezyka-naturalnego-nlp" title="Permalink to this heading">#</a></h4>
+<p>Analizuje dane tekstowe geoprzestrzenne, umożliwiając ekstrakcję informacji, analizę trendów i monitorowanie klęsk żywiołowych.</p>
+</section>
+<section id="teledetekcja">
+<h4>Teledetekcja<a class="headerlink" href="#teledetekcja" title="Permalink to this heading">#</a></h4>
+<p>Korzysta z czujników na satelitach i samolotach, zbierając dane o powierzchni Ziemi, atmosferze i oceanach, co wspiera analizę geograficzną.</p>
+</section>
+<section id="big-data-i-przetwarzanie-w-chmurze">
+<h4>Big Data i przetwarzanie w chmurze<a class="headerlink" href="#big-data-i-przetwarzanie-w-chmurze" title="Permalink to this heading">#</a></h4>
+<p>Dane przestrzenne zwykle są ogromne. Te technologie zapewniają skalowalne przechowywanie i przetwarzanie dużych zbiorów danych geoprzestrzennych.</p>
+</section>
+<section id="internet-rzeczy-iot">
+<h4>Internet rzeczy (IoT)<a class="headerlink" href="#internet-rzeczy-iot" title="Permalink to this heading">#</a></h4>
+<p>Urządzenia z czujnikami i GPS dostarczają dane o środowisku, infrastrukturze i aktywności ludzi, wspierając decyzje oparte na danych.</p>
+</section>
+<section id="modele-podstawowe-foundationan-models">
+<h4>Modele podstawowe (Foundationan models)<a class="headerlink" href="#modele-podstawowe-foundationan-models" title="Permalink to this heading">#</a></h4>
+<p>Modele głębokiego uczenia, takie jak Segment Anything czy Prithvi-100M, wstępnie trenowane na dużych zbiorach danych. Dzięki szerokiemu zrozumieniu świata pozwalają na adaptację do różnych zadań przy minimalnej ilości dodatkowych danych, co czyni je wydajniejszymi od tradycyjnych modeli ML. Istotne ze względu na objętości danych przestrzennych</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+<span class="c1"># Generowanie syntetycznych danych geoprzestrzennych</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mf">50.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">21.1</span><span class="p">,</span> <span class="mf">50.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">25.9</span><span class="p">,</span> <span class="mf">35.3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mf">20.3</span><span class="p">]]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Klasteryzacja danych za pomocą DBSCAN</span>
+<span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">labels_</span>
+
+<span class="c1"># Tworzenie wykresu z wykorzystaniem Cartopy</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()})</span>
+
+<span class="c1"># Dodawanie mapy świata i elementów geograficznych</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">COASTLINE</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Rysowanie punktów danych</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Dodawanie tytułu</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Klasteryzacja danych geoprzestrzennych za pomocą DBSCAN&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="c1"># plt.colorbar(scatter, label=&quot;Klasy klastrów&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5ed47ed22ce7433274efe50801b2cff652a7df345860fe056883c787c32b6406.png" src="_images/5ed47ed22ce7433274efe50801b2cff652a7df345860fe056883c787c32b6406.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="przyklady-geoai">
+<h2>Przykłady GeoAI:<a class="headerlink" href="#przyklady-geoai" title="Permalink to this heading">#</a></h2>
+<section id="przyklad-1-monitorowanie-zmian-klimatycznych">
+<h3>Przykład 1: Monitorowanie zmian klimatycznych<a class="headerlink" href="#przyklad-1-monitorowanie-zmian-klimatycznych" title="Permalink to this heading">#</a></h3>
+<p>Problem: Obserwacja wylesień i nielegalnej ścinki drzew.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Dane?
+Algorytmy?
+Cechy?
+Miary dokładności?
+Jak zastosować wyniki?
+</pre></div>
+</div>
+</section>
+<section id="przyklad-2-optymalizacja-ruchu-drogowego-w-miastach">
+<h3>Przykład 2: Optymalizacja ruchu drogowego w miastach<a class="headerlink" href="#przyklad-2-optymalizacja-ruchu-drogowego-w-miastach" title="Permalink to this heading">#</a></h3>
+<p>Problem: Codzienne korki utrudniają życie mieszkańcom dużych miast. Jak za pomocą GeoAI można zaplanować lepszy przepływ ruchu?</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Dane?
+Algorytmy?
+Cechy?
+Miary dokładności?
+Jak zastosować wyniki?
+</pre></div>
+</div>
+</section>
+<section id="przyklad-3-zarzadzanie-kryzysowe-po-katastrofach-naturalnych">
+<h3>Przykład 3: Zarządzanie kryzysowe po katastrofach naturalnych<a class="headerlink" href="#przyklad-3-zarzadzanie-kryzysowe-po-katastrofach-naturalnych" title="Permalink to this heading">#</a></h3>
+<p>Problem: Po huraganie trudno jest zidentyfikować najbardziej dotknięte obszary i zoptymalizować dostarczanie pomocy.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Dane?
+Algorytmy?
+Cechy?
+Miary dokładności?
+Jak zastosować wyniki?
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.%20UM%208%20-%20%C4%87wiczenia.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Uczenie Maszynowe - ćwiczenia 8</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">K-Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasteryzacja-hierarchiczna">2. Klasteryzacja hierarchiczna</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-density-based-spatial-clustering-of-applications-with-noise">3. DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ocena-klasteryzacji-dostepny-prawidlowy-podzial">Ocena klasteryzacji - dostępny prawidłowy podział</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skorygowany-wskaznik-randa-ari">Skorygowany Wskaźnik Randa (ARI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#znormalizowana-wzajemna-informacja-nmi">Znormalizowana Wzajemna Informacja (NMI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jednorodnosc-kompletnosc-i-miara-v">Jednorodność, Kompletnosć i Miara V</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#podsumowanie">Podsumowanie</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ocena-klasteryzacji-prawidlowy-podzial-niedostepny">Ocena klasteryzacji - prawidłowy podział niedostępny</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wskaznik-sylwetki-silhouette-score">Wskaźnik Sylwetki (Silhouette Score)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indeks-daviesa-bouldina">Indeks Daviesa-Bouldina</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indeks-calinskiego-harabasza">Indeks Calinskiego-Harabasza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Podsumowanie</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redukcja-wymiarowosci">Redukcja wymiarowości</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-analiza-glownych-skladowych">PCA - Analiza Głównych Składowych</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoai-geospatial-artificial-intelligence">GeoAI - Geospatial Artificial Intelligence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kluczowe-elementy-geoai">Kluczowe elementy GeoAI:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kluczowe-technologie-wspierajace-geoai">Kluczowe technologie wspierające GeoAI:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wizja-komputerowa-cv">Wizja komputerowa (CV)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#przetwarzanie-jezyka-naturalnego-nlp">Przetwarzanie języka naturalnego (NLP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teledetekcja">Teledetekcja</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#big-data-i-przetwarzanie-w-chmurze">Big Data i przetwarzanie w chmurze</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internet-rzeczy-iot">Internet rzeczy (IoT)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modele-podstawowe-foundationan-models">Modele podstawowe (Foundationan models)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklady-geoai">Przykłady GeoAI:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklad-1-monitorowanie-zmian-klimatycznych">Przykład 1: Monitorowanie zmian klimatycznych</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklad-2-optymalizacja-ruchu-drogowego-w-miastach">Przykład 2: Optymalizacja ruchu drogowego w miastach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przyklad-3-zarzadzanie-kryzysowe-po-katastrofach-naturalnych">Przykład 3: Zarządzanie kryzysowe po katastrofach naturalnych</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kamil Smolak
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
